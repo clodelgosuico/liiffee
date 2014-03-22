@@ -113,19 +113,11 @@
 {
     __block CLLocationCoordinate2D center ;
     __block NSNumber *hasCenter = @NO;
-    static NSString *grayPinID = @"grayPinId";
-    static NSString *greenPinID = @"greenPinId";
     [self.viewModel.foursquarePlaces enumerateObjectsUsingBlock:^(NSDictionary * fqPlace, NSUInteger idx, BOOL *stop) {
         NSString *placeId = fqPlace[@"id"];
 //        NSLog(@"id %@", placeId);
         if(![self.mapAnnotations objectForKey:placeId]){
-            MKAnnotationView *annotationView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:grayPinID];
-            MKPointAnnotation *annotation = (MKPointAnnotation *)annotationView.annotation;
-            if(!annotationView){
-                annotation = [[MKPointAnnotation alloc] init];
-                annotationView =  [[MKAnnotationView alloc] initWithAnnotation:annotation
-                                                               reuseIdentifier:grayPinID];;
-            }
+            MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
 
             CGFloat lat = [fqPlace[@"location"][@"lat"] floatValue];
             CGFloat lng = [fqPlace[@"location"][@"lng"] floatValue];
@@ -145,6 +137,21 @@
     if(hasCenter)
         [self.mapView setCenterCoordinate:center animated:YES];
 
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    return nil;
+    // XXX TODO will show the custom pin when we can show the title view, and a button, etc
+    static NSString *grayPinID = @"grayPinId";
+    static NSString *greenPinID = @"greenPinId";
+    MKAnnotationView *annotationView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:grayPinID];
+    if(!annotationView){
+        annotationView =  [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                       reuseIdentifier:grayPinID];;
+        annotationView.image = [UIImage imageNamed:@"MapGray"];
+    }
+
+    return annotationView;
 }
 
 - (NSDictionary *)foursquarePlaceForAnnotation:(MKAnnotationView *)annotationView

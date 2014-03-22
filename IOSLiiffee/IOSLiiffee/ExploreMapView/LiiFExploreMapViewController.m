@@ -5,6 +5,7 @@
 
 #import "LiiFExploreMapViewController.h"
 #import "LiiFMapViewModel.h"
+#import "LiiFBusinessPlaceViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
@@ -36,6 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.title = @"Salad Places";
 
     [self setupLayout];
     [self setupModelViewConnections];
@@ -45,9 +47,20 @@
         @strongify(self);
         // TODO show pins in  map
         if(x){
-            [self showFoursquarePlaces];
+            NSArray *places = (NSArray *)x;
+            // for now: show the first business place view
+            [self showBusinessPlaceViewForFoursquarePlace:[places firstObject]];
+            // show pins in the map
+//            [self showFoursquarePlaces];
         }
     }];
+}
+
+- (void)showBusinessPlaceViewForFoursquarePlace:(NSDictionary *)foursquarePlace
+{
+    LiiFBusinessPlaceViewController *businessPlaceViewController = [[LiiFBusinessPlaceViewController alloc] init];
+    [self.navigationController pushViewController:businessPlaceViewController animated:YES];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {

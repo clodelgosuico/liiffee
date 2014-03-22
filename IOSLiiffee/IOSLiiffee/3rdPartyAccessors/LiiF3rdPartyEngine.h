@@ -8,5 +8,6 @@
 
 @interface LiiF3rdPartyEngine : NSObject
 
-+ (NSArray *)presetFoursquareSaladPlaces;
+
++ (RACSignal *)presetFoursquareSaladPlaces;
 @end

@@ -33,56 +33,85 @@
     return places;
 }
 
-+ (NSArray*)presetFoursquareSaladPlaces
+/**
+* This method is fetching the preset places and cache them once. Once it's in the cache, we do not fetch them
+* from Foursquare
+* XXX TODO synchronize callbacks
+*/
++ (RACSignal*)presetFoursquareSaladPlaces {
+    // force the cache to clear out
+//    [[EGOCache globalCache] clearCache];
+    // example to get the result for 1 preset place:
+//    RACSignal *signal = [LiiF3rdPartyEngine searchFoursquarePlaceForPreset:places[0]];
+//    [signal subscribeNext:^(id x) {
+//        NSLog(@"got %@", x);
+//    }];
+
+    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        // takes the preset places
+        NSArray *places = [LiiF3rdPartyEngine presetSaladPlacesNames];
+        // create the signals that return a list of places from cache or from foursquare
+        RACSignal *allPresetSignal = [RACSignal concat:[places.rac_sequence map:^id(id value) {
+            return [LiiF3rdPartyEngine searchFoursquarePlaceForPreset:value];
+        }]];
+        // runs the signals, when completed is called, it means all signals have completed, and
+        // results contains all of the places
+        NSMutableArray *results = [NSMutableArray array];
+        [allPresetSignal subscribeNext:^(id x) {
+            NSLog(@"%@", x);
+            RACTuple *tuple = (RACTuple *)x;
+            NSArray *venues = tuple.second;
+            [results addObjectsFromArray:venues];
+        } completed:^{
+            NSLog(@"number of places %d\n%@", results.count, results[0]);
+            [subscriber sendNext:results];
+            [subscriber sendCompleted];
+        }];
+        return nil;
+    }];
+}
+
++ (RACSignal*)searchFoursquarePlaceForPreset:(NSDictionary *)presetPlace
 {
-    NSMutableArray *presetResult = [NSMutableArray array];
-
-    NSArray *places = [LiiF3rdPartyEngine presetSaladPlacesNames];
-//    NSDictionary *place = [places firstObject];
-
-    [[EGOCache globalCache] clearCache];
-
-    [places enumerateObjectsUsingBlock:^(NSDictionary * place, NSUInteger idx, BOOL *stop) {
-        //basic EGOCache mechanism
-        NSString *cacheKey = [[place allValues] componentsJoinedByString:@";"];
+    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        NSString *cacheKey = [[presetPlace allValues] componentsJoinedByString:@";"];
         BOOL searchForPlaceAnyway = YES;
         if ([[EGOCache globalCache] hasCacheForKey:cacheKey]){
             id object = [[EGOCache globalCache] arrayForKey:cacheKey];
             if([object isKindOfClass:[NSArray class]]){
                 NSArray *venues = (NSArray *) object;
-//                if(ids.count>0){
-//                    searchForPlaceAnyway = NO;
-//                    [ids enumerateObjectsUsingBlock:^(NSString *pid, NSUInteger idx, BOOL *stop) {
-//                        NSDictionary * place = (NSDictionary *)[[EGOCache globalCache] objectForKey:pid];
-//                        [presetResult addObject:place];
-//                    }];
-//                }
+                if(venues.count>0){
+                    searchForPlaceAnyway = NO;
+                    [subscriber sendNext:[RACTuple tupleWithObjects:[NSNumber numberWithBool:YES], venues, nil]];
+                    [subscriber sendCompleted];
+                }
             }
         }
-
         if(searchForPlaceAnyway){
-            [LiiF3rdPartyEngine searchFoursquarePlaceName:place[@"name"] inCityName:place[@"city"]
-              callback:^(BOOL success, id result)
-              {
-                  NSArray *venues = (NSArray *)result;
-                  if(venues.count>0){
-//                      NSMutableArray *ids = [ NSMutableArray array];
-//                      [venues enumerateObjectsUsingBlock:^(NSDictionary * place, NSUInteger idx, BOOL *stop) {
-//                          NSString *pid = place[@"id"];
-//                          [[EGOCache globalCache] setObject:place forKey:pid];
-//                          [ids addObject:pid];
-//                      }];
+            RACSignal *signal = [LiiF3rdPartyEngine searchFoursquarePlaceName:presetPlace[@"name"] inCityName:presetPlace[@"city"]];
+            [signal subscribeNext:^(id x) {
+                RACTuple *tuple = (RACTuple *) x;
+                NSArray *venues = tuple.second;
+                if(venues.count>0){
                       [[EGOCache globalCache] setArray:venues forKey:cacheKey];
-//                      [[EGOCache globalCache] setObject:ids forKey:cacheKey];
-                  }
-                  [presetResult addObjectsFromArray:venues];
-                  NSLog(@"%@ ==> %@",place, venues);
+                }
+                [subscriber sendNext:x];
+                [subscriber sendCompleted];
             }];
         }
-
+        return nil;
     }];
-    NSLog(@"preset %d", presetResult.count);
-    return nil;
+}
+
++ (RACSignal *)searchFoursquarePlaceName:(NSString*)placeName inCityName:(NSString*)cityName
+{
+    return [RACSignal createSignal:^RACDisposable * (id<RACSubscriber> subscriber) {
+        [LiiF3rdPartyEngine searchFoursquarePlaceName:placeName inCityName:cityName callback:^(BOOL success, id result) {
+            [subscriber sendNext:[RACTuple tupleWithObjects:[NSNumber numberWithBool:success], result, nil]];
+            [subscriber sendCompleted];
+        }];
+        return nil; // `nil` means there's no way to cancel.
+    }];
 }
 
 +(NSArray*)searchFoursquarePlaceName:(NSString*)placeName inCityName:(NSString*)cityName

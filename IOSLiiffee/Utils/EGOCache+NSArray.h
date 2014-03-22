@@ -4,6 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <EGOCache/EGOCache.h>
 
 @interface EGOCache (NSArray)
 - (void)setArray:(NSArray*)array forKey:(NSString*)key;

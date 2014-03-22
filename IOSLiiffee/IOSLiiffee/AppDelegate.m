@@ -16,7 +16,10 @@
     [self setupFoursquare];
     [self setupInstagram];
 
-    [LiiF3rdPartyEngine presetFoursquareSaladPlaces];
+    [[LiiF3rdPartyEngine presetFoursquareSaladPlaces] subscribeNext:^(id x) {
+        NSArray *results = (NSArray *)x;
+        NSLog(@"result %d", results.count);
+    }];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

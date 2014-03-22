@@ -4,7 +4,7 @@
 //
 
 #import "EGOCache+NSArray.h"
-#import <EGOCache/EGOCache.h>
+
 
 @implementation EGOCache (NSArray)
 

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "LiiF3rdPartyEngine.h"
 
 @implementation AppDelegate
 
@@ -14,6 +15,8 @@
 {
     [self setupFoursquare];
     [self setupInstagram];
+
+    [LiiF3rdPartyEngine presetFoursquareSaladPlaces];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

@@ -2,8 +2,13 @@ platform :ios, "7.0"
 
 target "IOSLiiffee" do
   pod 'ReactiveCocoa', '~> 2.2.4'
+  pod 'ReactiveViewModel'#, '~> 0.1.1'
+  pod 'SVProgressHUD'
+  pod 'SDWebImage'
+  pod 'Facebook-iOS-SDK'
   pod 'libextobjc'
   #pod 'RestKit' # conflicting with afnetworking version required for other pods
   pod 'InstagramKit', '2.1.0'
   pod 'Foursquare-API-v2', '1.4.4'
+  pod 'EGOCache'
 end 

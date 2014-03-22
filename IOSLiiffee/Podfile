@@ -1,0 +1,9 @@
+platform :ios, "7.0"
+
+target "StorenvyApp" do
+  pod 'ReactiveCocoa', '~> 2.2.4'
+  pod 'libextobjc'
+  pod 'RestKit', '~> 0.22.0'
+  pod 'InstagramKit', '2.1.0'
+  pod 'Foursquare-API-v2', '1.4.4'
+end 

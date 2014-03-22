@@ -14,7 +14,12 @@
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) LiiFMapViewModel *viewModel;
 
+@property (nonatomic, strong) NSMutableDictionary *mapAnnotations;
+
+
 - (void)showFoursquarePlaces;
+
+- (NSDictionary *)foursquarePlaceForAnnotation:(MKPointAnnotation *)annotation;
 @end
 
 @implementation LiiFExploreMapViewController {
@@ -51,14 +56,15 @@
             // for now: show the first business place view
             [self showBusinessPlaceViewForFoursquarePlace:[places firstObject]];
             // show pins in the map
-//            [self showFoursquarePlaces];
+            [self showFoursquarePlaces];
         }
     }];
 }
 
 - (void)showBusinessPlaceViewForFoursquarePlace:(NSDictionary *)foursquarePlace
 {
-    LiiFBusinessPlaceViewController *businessPlaceViewController = [[LiiFBusinessPlaceViewController alloc] init];
+    LiiFBusinessPlaceViewController *businessPlaceViewController = [[LiiFBusinessPlaceViewController alloc]
+            initWithFoursquarePlace:foursquarePlace];
     [self.navigationController pushViewController:businessPlaceViewController animated:YES];
 
 }
@@ -94,6 +100,13 @@
     return _mapView;
 }
 
+- (NSMutableDictionary *)mapAnnotations {
+    if(!_mapAnnotations){
+        _mapAnnotations = [NSMutableDictionary dictionaryWithCapacity:20];
+    }
+    return _mapAnnotations;
+}
+
 #pragma mark - Pins
 
 - (void) showFoursquarePlaces
@@ -101,22 +114,52 @@
     __block CLLocationCoordinate2D center ;
     __block NSNumber *hasCenter = @NO;
     [self.viewModel.foursquarePlaces enumerateObjectsUsingBlock:^(NSDictionary * fqPlace, NSUInteger idx, BOOL *stop) {
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        CGFloat lat = [fqPlace[@"location"][@"lat"] floatValue];
-        CGFloat lng = [fqPlace[@"location"][@"lng"] floatValue];
-        NSString *title = fqPlace[@"name"];
-        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(lat, lng);
-        if(!hasCenter.boolValue){
-            center = coordinates;
-            hasCenter = @YES;
+        NSString *placeId = fqPlace[@"id"];
+//        NSLog(@"id %@", placeId);
+        if(![self.mapAnnotations objectForKey:placeId]){
+            MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+            CGFloat lat = [fqPlace[@"location"][@"lat"] floatValue];
+            CGFloat lng = [fqPlace[@"location"][@"lng"] floatValue];
+            NSString *title = fqPlace[@"name"];
+    //        annotation.t
+            CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(lat, lng);
+            if(!hasCenter.boolValue){
+                center = coordinates;
+                hasCenter = @YES;
+            }
+            [annotation setCoordinate:coordinates];
+            [annotation setTitle:title];
+            [self.mapView addAnnotation:annotation];
+            [self.mapAnnotations setObject:annotation forKey:placeId];
         }
-        [annotation setCoordinate:coordinates];
-        [annotation setTitle:title];
-        [self.mapView addAnnotation:annotation];
-
     }];
+    // recenter map
+    if(hasCenter)
+        [self.mapView setCenterCoordinate:center animated:YES];
 
-    [self.mapView setCenterCoordinate:center animated:YES];
+}
+
+- (NSDictionary *)foursquarePlaceForAnnotation:(MKPointAnnotation *)annotation
+{
+    __block NSDictionary *result = nil;
+    [self.mapAnnotations enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if([obj isEqual:annotation]){
+            NSString *placeId = (NSString *)key;
+            result = [self.viewModel foursquarePlaceWithId:placeId];
+            *stop = YES;
+        }
+    }];
+    return result;
+}
+
+#pragma mark - Map delegate
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    
+//    if([view isKindOfClass:[MKPointAnnotation class]]){
+    NSDictionary *place = [self foursquarePlaceForAnnotation:(MKPointAnnotation *) (view.annotation)];
+    [self showBusinessPlaceViewForFoursquarePlace:place];
+//    }
 
 }
 

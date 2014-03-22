@@ -98,7 +98,7 @@
         _collectionView.backgroundColor = [UIColor liifBarelyGray];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-//        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:CategoryCellIdentifier];
+        [self.viewModel registerCollectionViewCellClasses:_collectionView];
         _collectionView.bounces = YES;
         _collectionView.alwaysBounceVertical = YES;
         _collectionView.scrollEnabled = YES;
@@ -120,18 +120,17 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CategoryCellIdentifier
-//                                                                            forIndexPath:indexPath];
-//    cell.backgroundColor = [UIColor stuiSubtleGray];
-//    UILabel *label = [[UILabel alloc] initWithFrame:cell.bounds];
-//    StvyEntityCategory *category = [self.viewModel objectForIndexPath:indexPath];
-//    label.textAlignment = NSTextAlignmentCenter;
-//    label.attributedText = [[NSAttributedString alloc] initWithString:category.name
-//                                                           attributes:[UIFont stuiStringAttributesWithSize:26.0f
-//                                                                                                 withColor:[UIColor stuiDarkGray]]];
-//    [cell addSubview:label];
-//    return cell;
-    return nil;
+    NSString *cellIdentifier = [self.viewModel cellIdentifierAtIndexPath:indexPath];
+    UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
+                                                                            forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor liifBarelyGray];
+    UILabel *label = [[UILabel alloc] initWithFrame:cell.bounds];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.attributedText = [[NSAttributedString alloc] initWithString:@"yo"
+                           attributes:[UIFont liifStringAttributesWithSize:26.0f
+                                         withColor:[UIColor liifDarkText]]];
+    [cell addSubview:label];
+    return cell;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

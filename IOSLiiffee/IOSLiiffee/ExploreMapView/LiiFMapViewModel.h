@@ -11,4 +11,5 @@
 
 @property (nonatomic, strong) NSArray *foursquarePlaces;
 
+- (NSDictionary *)foursquarePlaceWithId:(NSString *)placeId;
 @end

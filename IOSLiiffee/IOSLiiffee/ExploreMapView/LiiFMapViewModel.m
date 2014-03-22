@@ -33,4 +33,16 @@
     }];
 }
 
+- (NSDictionary *)foursquarePlaceWithId:(NSString*)placeId
+{
+    __block NSDictionary* result = nil;
+    [self.foursquarePlaces enumerateObjectsUsingBlock:^(NSDictionary *place, NSUInteger idx, BOOL *stop) {
+        NSString *s = place[@"id"];
+        if([s isEqualToString:placeId])
+            result = place;
+        * stop = YES;
+    }];
+    return result;
+}
+
 @end

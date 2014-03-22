@@ -17,6 +17,12 @@
 
 + (UIColor *)liifGreen;
 
++ (UIColor *)liifDarkText;
+
++ (UIColor *)liifActiveIcon;
+
++ (UIColor *)liifInactiveIcon;
+
 + (UIColor *)liifBarelyGray;
 
 + (UIColor *)liifSubtleGray;

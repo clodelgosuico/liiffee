@@ -55,10 +55,32 @@
 
 + (UIColor*)liifGreen
 {
-    return [UIColor colorWithHexString:@"6ec4a5"];
+    return [UIColor colorWithHexString:@"006838"];
 }
 
-#pragma mark - Data grid
++ (UIColor*)liifDarkText
+{
+    return [UIColor colorWithHexString:@"414042"];
+}
+
++ (UIColor*)liifLinks
+{
+    return [UIColor colorWithHexString:@"20639a"];
+}
+
+#pragma mark - Icons
+
++ (UIColor*)liifActiveIcon
+{
+    return [UIColor colorWithHexString:@"50b848"];
+}
+
++ (UIColor*)liifInactiveIcon
+{
+    return [UIColor colorWithHexString:@"9ea0a3"];
+}
+
+#pragma mark - Data grid (non liif right now)
 
 + (UIColor*)liifBarelyGray
 {

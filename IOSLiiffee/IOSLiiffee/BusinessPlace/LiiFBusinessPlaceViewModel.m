@@ -19,7 +19,6 @@ static NSString* ImageCellIdentifier = @"ImageCell";
     self = [super init];
     if(!self) return nil;
 
-    self.foursquarePlace = foursquarePlace;
 
     @weakify(self);
 
@@ -29,8 +28,9 @@ static NSString* ImageCellIdentifier = @"ImageCell";
     }];
     [self.didBecomeActiveSignal subscribeNext:^(id x) {
         // TODO get instagram images for the place
-
     }];
+
+    self.foursquarePlace = foursquarePlace;
 
     return self;
 }
@@ -42,8 +42,11 @@ static NSString* ImageCellIdentifier = @"ImageCell";
         NSArray *titleSection = @[self.foursquarePlace];
         NSArray *infoSection = @[self.foursquarePlace];
         NSArray *toolbarSection = @[[NSNull null]];
-        NSArray *imagesSection = @[@{@"url": @""}];
-
+        NSMutableArray *imagesSection = [@[@{@"url" : @""}, @{@"url" : @""}] mutableCopy];
+        [sections addObject:titleSection];
+        [sections addObject:infoSection];
+        [sections addObject:toolbarSection];
+        [sections addObject:imagesSection];
     }
 
     self.sections = sections;

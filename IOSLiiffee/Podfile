@@ -11,4 +11,5 @@ target "IOSLiiffee" do
   pod 'InstagramKit', '2.1.0'
   pod 'Foursquare-API-v2', '1.4.4'
   pod 'EGOCache'
+  pod 'Masonry'
 end 

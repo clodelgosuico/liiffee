@@ -39,8 +39,7 @@
 * XXX TODO synchronize callbacks
 */
 + (RACSignal*)presetFoursquareSaladPlaces {
-    // force the cache to clear out
-//    [[EGOCache globalCache] clearCache];
+
     // example to get the result for 1 preset place:
 //    RACSignal *signal = [LiiF3rdPartyEngine searchFoursquarePlaceForPreset:places[0]];
 //    [signal subscribeNext:^(id x) {

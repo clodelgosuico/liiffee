@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 Liiffee. All rights reserved.
 //
 
+#import <EGOCache/EGOCache.h>
 #import "AppDelegate.h"
 #import "LiiF3rdPartyEngine.h"
+#import "LiiFExploreMapViewController.h"
 
 @implementation AppDelegate
 
@@ -16,14 +18,36 @@
     [self setupFoursquare];
     [self setupInstagram];
 
-    [[LiiF3rdPartyEngine presetFoursquareSaladPlaces] subscribeNext:^(id x) {
-        NSArray *results = (NSArray *)x;
-        NSLog(@"result %d", results.count);
-    }];
-
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+
+    LiiFExploreMapViewController *mapViewController = [[LiiFExploreMapViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
+    navigationController.view.backgroundColor = [UIColor liifBarelyGray];
+    // not working
+    navigationController.navigationBar.barTintColor = [UIColor liifGreen];
+    navigationController.navigationBar.tintColor = [UIColor liifWhite];
+    navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    navigationController.navigationBar.alpha = 0.3f;
+    navigationController.navigationBar.translucent = YES;
+    navigationController.navigationBar.titleTextAttributes = [UIFont liifStringAttributesWithSize:18.0f withColor:[UIColor liifWhite]];
+    //set back button color
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
+            setTitleTextAttributes:[UIFont liifStringAttributesWithSize:14.0f withColor:[UIColor liifWhite]]
+                          forState:UIControlStateNormal];
+
+    self.window.rootViewController = navigationController;
     self.window.backgroundColor = [UIColor whiteColor];
+
+
+    // force the cache to clear out
+//    [[EGOCache globalCache] clearCache];
+
+//    [[LiiF3rdPartyEngine presetFoursquareSaladPlaces] subscribeNext:^(id x) {
+//        NSArray *results = (NSArray *)x;
+//        NSLog(@"result %d", results.count);
+//    }];
+
+
     [self.window makeKeyAndVisible];
     return YES;
 }

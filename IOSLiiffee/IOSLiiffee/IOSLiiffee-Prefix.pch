@@ -15,6 +15,10 @@
     #import <Foundation/Foundation.h>
     #import <Foursquare-API-v2/Foursquare2.h>
     #import <InstagramKit/InstagramKit.h>
+    #import <libextobjc/EXTScope.h>
     #import <ReactiveCocoa/ReactiveCocoa.h>
-
+    #import "UIColor+LiiFUtils.h"
+    #import "UIFont+LiiFUtils.h"
+    #define MAS_SHORTHAND
+    #import <Masonry/Masonry.h>
 #endif

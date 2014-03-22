@@ -113,15 +113,23 @@
 {
     __block CLLocationCoordinate2D center ;
     __block NSNumber *hasCenter = @NO;
+    static NSString *grayPinID = @"grayPinId";
+    static NSString *greenPinID = @"greenPinId";
     [self.viewModel.foursquarePlaces enumerateObjectsUsingBlock:^(NSDictionary * fqPlace, NSUInteger idx, BOOL *stop) {
         NSString *placeId = fqPlace[@"id"];
 //        NSLog(@"id %@", placeId);
         if(![self.mapAnnotations objectForKey:placeId]){
-            MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+            MKAnnotationView *annotationView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:grayPinID];
+            MKPointAnnotation *annotation = (MKPointAnnotation *)annotationView.annotation;
+            if(!annotationView){
+                annotation = [[MKPointAnnotation alloc] init];
+                annotationView =  [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                               reuseIdentifier:grayPinID];;
+            }
+
             CGFloat lat = [fqPlace[@"location"][@"lat"] floatValue];
             CGFloat lng = [fqPlace[@"location"][@"lng"] floatValue];
             NSString *title = fqPlace[@"name"];
-    //        annotation.t
             CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(lat, lng);
             if(!hasCenter.boolValue){
                 center = coordinates;
@@ -139,11 +147,11 @@
 
 }
 
-- (NSDictionary *)foursquarePlaceForAnnotation:(MKPointAnnotation *)annotation
+- (NSDictionary *)foursquarePlaceForAnnotation:(MKAnnotationView *)annotationView
 {
     __block NSDictionary *result = nil;
     [self.mapAnnotations enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if([obj isEqual:annotation]){
+        if([obj isEqual:annotationView.annotation]){
             NSString *placeId = (NSString *)key;
             result = [self.viewModel foursquarePlaceWithId:placeId];
             *stop = YES;
@@ -155,10 +163,11 @@
 #pragma mark - Map delegate
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    
+
 //    if([view isKindOfClass:[MKPointAnnotation class]]){
-    NSDictionary *place = [self foursquarePlaceForAnnotation:(MKPointAnnotation *) (view.annotation)];
+    NSDictionary *place = [self foursquarePlaceForAnnotation:view];
     [self showBusinessPlaceViewForFoursquarePlace:place];
+    [self.mapView deselectAnnotation:view animated:NO];
 //    }
 
 }

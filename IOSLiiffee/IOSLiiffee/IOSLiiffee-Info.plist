@@ -50,5 +50,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>InstagramKitAppClientId</key>
+	<string>699fb69fa8bd4df08dccd1a55eb5d688</string>
+	<key>InstagramKitAppRedirectURL</key>
+	<string>liiffee://instagram</string>
+	<key>InstagramKitBaseUrl</key>
+	<string>https://api.instagram.com/v1/</string>
+	<key>InstagramKitAuthorizationUrl</key>
+	<string>https://api.instagram.com/oauth/authorize/</string>
+
 </dict>
 </plist>

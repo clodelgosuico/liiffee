@@ -20,7 +20,7 @@
 {
     NSArray* places = @[
             @{@"name": @"Tender Greens", @"address": @"30 fremont", @"city": @"san francisco"},
-//            @{@"name": @"Feed", @"address": @"215 fremont", @"city": @"san francisco"},
+            @{@"name": @"Feed", @"address": @"215 fremont", @"city": @"san francisco"},
 //            @{@"name": @"Focaccia", @"address": @"455 market", @"city": @"san francisco"},
 //            @{@"name": @"Cafe Venue", @"address": @"218 montgomery", @"city": @"san francisco"},
 //            @{@"name": @"Blue Barn", @"address": @"2105 Chestnut Street", @"city": @"san francisco"},

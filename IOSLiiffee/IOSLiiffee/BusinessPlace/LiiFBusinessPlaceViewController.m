@@ -123,18 +123,31 @@
     NSString *cellIdentifier = [self.viewModel cellIdentifierAtIndexPath:indexPath];
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
                                                                             forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor liifBarelyGray];
-    UILabel *label = [[UILabel alloc] initWithFrame:cell.bounds];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.attributedText = [[NSAttributedString alloc] initWithString:@"yo"
-                           attributes:[UIFont liifStringAttributesWithSize:26.0f
-                                         withColor:[UIColor liifDarkText]]];
-    [cell addSubview:label];
+    NSArray * rows = self.viewModel.sections[indexPath.section];
+    id object = rows[indexPath.row];
+    if([cell respondsToSelector:@selector(setDataObject:)]){
+        [cell performSelector:@selector(setDataObject:) withObject:object];
+    }
+    else{
+        cell.backgroundColor = [UIColor liifBarelyGray];
+        UILabel *label = [[UILabel alloc] initWithFrame:cell.bounds];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.attributedText = [[NSAttributedString alloc] initWithString:@"?"
+                               attributes:[UIFont liifStringAttributesWithSize:26.0f
+                                             withColor:[UIColor liifDarkText]]];
+        [cell addSubview:label];
+    }
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return self.viewModel.sections.count;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    CGSize result;
+    return [self.viewModel sizeForItemAtIndexPath:indexPath];
+//    return result;
 }
 
 

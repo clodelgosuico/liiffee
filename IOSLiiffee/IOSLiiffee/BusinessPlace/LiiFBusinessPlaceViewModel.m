@@ -4,6 +4,8 @@
 //
 
 #import "LiiFBusinessPlaceViewModel.h"
+#import "LiiFTitleCellView.h"
+#import "LiiFImageCellView.h"
 
 static NSString* TitleCellIdentifier = @"TitleCell";
 static NSString* InfoCellIdentifier = @"InfoCell";
@@ -42,7 +44,18 @@ static NSString* ImageCellIdentifier = @"ImageCell";
         NSArray *titleSection = @[self.foursquarePlace];
         NSArray *infoSection = @[self.foursquarePlace];
         NSArray *toolbarSection = @[[NSNull null]];
-        NSMutableArray *imagesSection = [@[@{@"url" : @""}, @{@"url" : @""}] mutableCopy];
+        NSMutableArray *imagesSection = [
+                @[@{@"url" : @""},
+                  @{@"url" : @""},
+                  @{@"url" : @""},
+                  @{@"url" : @""},
+                  @{@"url" : @""},
+                  @{@"url" : @""},
+                  @{@"url" : @""},
+                  @{@"url" : @""},
+                  @{@"url" : @""},
+                ]
+                mutableCopy];
         [sections addObject:titleSection];
         [sections addObject:infoSection];
         [sections addObject:toolbarSection];
@@ -56,17 +69,61 @@ static NSString* ImageCellIdentifier = @"ImageCell";
 
 - (void)registerCollectionViewCellClasses:(UICollectionView*)collectionView
 {
-    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:TitleCellIdentifier];
+    [collectionView registerClass:[LiiFTitleCellView class] forCellWithReuseIdentifier:TitleCellIdentifier];
     [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:InfoCellIdentifier];
     [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ToolbarCellIdentifier];
-    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ImageCellIdentifier];
+    [collectionView registerClass:[LiiFImageCellView class] forCellWithReuseIdentifier:ImageCellIdentifier];
 }
 
 - (NSString*)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath
 {
+    switch (indexPath.section){
+        case 0:{
+            return TitleCellIdentifier;
+        }
+        case 1:
+        {
+            return InfoCellIdentifier;
+        }
+        case 2:
+        {
+            return ToolbarCellIdentifier;
+        }
+        case 3:
+        {
+            return ImageCellIdentifier;
+        }
+
+
+    }
     return TitleCellIdentifier;
 }
 
+- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize result;
+    CGFloat screenWidth = 300.0f;
+    switch (indexPath.section){
+        case 0:{
+            return CGSizeMake(screenWidth, 80.0f);
+        }
+        case 1:
+        {
+            return CGSizeMake(screenWidth, 120.0f);
+        }
+        case 2:
+        {
+            return CGSizeMake(screenWidth, 44.0f);;
+        }
+        case 3:
+        {
+            return CGSizeMake(100.0f, 100.0f);;
+        }
+
+
+    }
+    return result;
+}
 
 
 @end

@@ -54,7 +54,7 @@
         if(x){
             NSArray *places = (NSArray *)x;
             // for now: show the first business place view
-            [self showBusinessPlaceViewForFoursquarePlace:[places firstObject]];
+//            [self showBusinessPlaceViewForFoursquarePlace:[places firstObject]];
             // show pins in the map
             [self showFoursquarePlaces];
         }
@@ -158,7 +158,8 @@
 {
     __block NSDictionary *result = nil;
     [self.mapAnnotations enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if([obj isEqual:annotationView.annotation]){
+        NSLog(@"comparing %p %p", obj, annotationView.annotation);
+        if(obj == annotationView.annotation || [obj isEqual:annotationView.annotation]){
             NSString *placeId = (NSString *)key;
             result = [self.viewModel foursquarePlaceWithId:placeId];
             *stop = YES;

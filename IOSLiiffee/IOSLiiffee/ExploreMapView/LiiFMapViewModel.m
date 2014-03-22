@@ -38,9 +38,11 @@
     __block NSDictionary* result = nil;
     [self.foursquarePlaces enumerateObjectsUsingBlock:^(NSDictionary *place, NSUInteger idx, BOOL *stop) {
         NSString *s = place[@"id"];
-        if([s isEqualToString:placeId])
+        if([s isEqualToString:placeId]){
             result = place;
-        * stop = YES;
+            * stop = YES;
+
+        }
     }];
     return result;
 }

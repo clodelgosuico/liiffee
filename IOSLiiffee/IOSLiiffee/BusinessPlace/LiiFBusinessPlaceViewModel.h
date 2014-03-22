@@ -17,4 +17,6 @@
 - (void)registerCollectionViewCellClasses:(UICollectionView *)collectionView;
 
 - (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;
+
+- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 @end

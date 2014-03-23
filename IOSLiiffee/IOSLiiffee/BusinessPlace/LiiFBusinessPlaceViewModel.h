@@ -13,6 +13,9 @@
 @property (nonatomic, strong) NSArray *sections;
 @property (nonatomic, strong) NSArray *instagramMediaObjects;
 
+/* Which data is shown in the bottom: 0: images, 1: list, 2: deals */
+@property (nonatomic, strong) NSNumber *bottomSectionMode;
+
 - (instancetype)initWithFoursquarePlace:(NSDictionary *)foursquarePlace;
 
 - (void)registerCollectionViewCellClasses:(UICollectionView *)collectionView;

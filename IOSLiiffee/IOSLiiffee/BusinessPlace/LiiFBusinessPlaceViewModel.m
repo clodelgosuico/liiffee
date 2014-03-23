@@ -9,11 +9,13 @@
 #import "LiiFInfoCellView.h"
 #import "LiiFToolbarCellView.h"
 #import "LiiF3rdPartyEngine.h"
+#import "LiiFDealCellView.h"
 
 static NSString* TitleCellIdentifier = @"TitleCell";
 static NSString* InfoCellIdentifier = @"InfoCell";
 static NSString* ToolbarCellIdentifier = @"ToolbarCell";
 static NSString* ImageCellIdentifier = @"ImageCell";
+static NSString* DealCellIdentifier = @"DealCell";
 
 
 @implementation LiiFBusinessPlaceViewModel {
@@ -24,6 +26,7 @@ static NSString* ImageCellIdentifier = @"ImageCell";
     self = [super init];
     if(!self) return nil;
 
+    self.bottomSectionMode = @2;
 
     @weakify(self);
 
@@ -65,28 +68,37 @@ static NSString* ImageCellIdentifier = @"ImageCell";
         [sections addObject:infoSection];
         [sections addObject:toolbarSection];
 
-        NSMutableArray *imagesSection = [
-                @[@{@"message" : @"Loading..."},
-//                  @{@"url" : @""},
-//                  @{@"url" : @""},
-//                  @{@"url" : @""},
-//                  @{@"url" : @""},
-//                  @{@"url" : @""},
-//                  @{@"url" : @""},
-//                  @{@"url" : @""},
-//                  @{@"url" : @""},
-                ]
-                mutableCopy];
-        if(self.instagramMediaObjects){
-            if(self.instagramMediaObjects.count > 0){
-                [sections addObject:self.instagramMediaObjects];
+        if(self.bottomSectionMode.integerValue==0){
+            NSMutableArray *imagesSection = [
+                    @[@{@"message" : @"Loading..."},
+    //                  @{@"url" : @""},
+    //                  @{@"url" : @""},
+    //                  @{@"url" : @""},
+    //                  @{@"url" : @""},
+    //                  @{@"url" : @""},
+    //                  @{@"url" : @""},
+    //                  @{@"url" : @""},
+    //                  @{@"url" : @""},
+                    ]
+                    mutableCopy];
+            if(self.instagramMediaObjects){
+                if(self.instagramMediaObjects.count > 0){
+                    [sections addObject:self.instagramMediaObjects];
+                }
+                else{
+                    [sections addObject:@[@{@"message" : @"No Photo Yet!"},]];
+                }
             }
             else{
-                [sections addObject:@[@{@"message" : @"No Photo Yet!"},]];
+                [sections addObject:imagesSection];
             }
         }
-        else{
-            [sections addObject:imagesSection];
+        else if(self.bottomSectionMode.integerValue == 2){
+            //
+            [sections addObject:@[
+                    @{@"title" : @"Chinese Chicken Salad",  @"url": @"image"},
+                    @{@"title" : @"Ceasar Salad",  @"url": @"image"},
+            ]];
         }
     }
 
@@ -101,6 +113,7 @@ static NSString* ImageCellIdentifier = @"ImageCell";
     [collectionView registerClass:[LiiFInfoCellView class] forCellWithReuseIdentifier:InfoCellIdentifier];
     [collectionView registerClass:[LiiFToolbarCellView class] forCellWithReuseIdentifier:ToolbarCellIdentifier];
     [collectionView registerClass:[LiiFImageCellView class] forCellWithReuseIdentifier:ImageCellIdentifier];
+    [collectionView registerClass:[LiiFDealCellView class] forCellWithReuseIdentifier:DealCellIdentifier];
 }
 
 - (NSString*)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath
@@ -119,7 +132,14 @@ static NSString* ImageCellIdentifier = @"ImageCell";
         }
         case 3:
         {
-            return ImageCellIdentifier;
+            switch (self.bottomSectionMode.integerValue){
+                case 0:{
+                    return ImageCellIdentifier;
+                }
+                case 2:{
+                    return DealCellIdentifier;
+                }
+            }
         }
 
 
@@ -145,7 +165,16 @@ static NSString* ImageCellIdentifier = @"ImageCell";
         }
         case 3:
         {
-            return CGSizeMake(100.0f, 100.0f);;
+            switch (self.bottomSectionMode.integerValue){
+                case 0:{// grid
+                    return CGSizeMake(100.0f, 100.0f);;
+                }
+                case 2:{// deals
+                    return CGSizeMake(screenWidth, 56.0f);
+                }
+
+            }
+
         }
 
 

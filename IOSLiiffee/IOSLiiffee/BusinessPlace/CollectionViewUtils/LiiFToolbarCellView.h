@@ -7,4 +7,8 @@
 
 
 @interface LiiFToolbarCellView : UICollectionViewCell
+
+/* 0:grid 1:list 2:deals */
+@property (nonatomic, strong) NSNumber *sectionMode;
+
 @end

@@ -41,6 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.collectionView.delaysContentTouches = NO;
 
     self.title = self.viewModel.foursquarePlace[@"name"];
 

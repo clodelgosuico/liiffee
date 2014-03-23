@@ -21,6 +21,7 @@
 		31E5EF2E18DDF79600B7541D /* IOSLiiffeeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 31E5EF2D18DDF79600B7541D /* IOSLiiffeeTests.m */; };
 		43FD676818DE7E5000B6FA88 /* LiiffeeBusinessAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FD676718DE7E5000B6FA88 /* LiiffeeBusinessAnnotation.m */; };
 		74C440E2956121A51DF12D0C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C44AEE2CED274A29687700 /* CFNetwork.framework */; };
+		74C441ADE5B9084D4A6D4A40 /* LiiFDealCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4433BBA019DF08BE62839 /* LiiFDealCellView.m */; };
 		74C44220FF1AB9096F039F0B /* EGOCache+NSArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C44E43665FD4338F051702 /* EGOCache+NSArray.m */; };
 		74C4426A0E2F4F79E75149D4 /* UIColor+LiiFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4433A7D32DFFA976A2AEB /* UIColor+LiiFUtils.m */; };
 		74C4432B034E1FC8322AE865 /* LiiFMapViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C44098919921A0B19ED4D1 /* LiiFMapViewModel.m */; };
@@ -75,10 +76,12 @@
 		31E5EF2D18DDF79600B7541D /* IOSLiiffeeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSLiiffeeTests.m; sourceTree = "<group>"; };
 		43FD676618DE7E5000B6FA88 /* LiiffeeBusinessAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiffeeBusinessAnnotation.h; sourceTree = "<group>"; };
 		43FD676718DE7E5000B6FA88 /* LiiffeeBusinessAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiffeeBusinessAnnotation.m; sourceTree = "<group>"; };
+		74C4406612C0F2A96882A471 /* LiiFDealCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFDealCellView.h; sourceTree = "<group>"; };
 		74C44098919921A0B19ED4D1 /* LiiFMapViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFMapViewModel.m; sourceTree = "<group>"; };
 		74C44170F8F52248DA5225AD /* LiiFBusinessPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFBusinessPlaceViewController.h; sourceTree = "<group>"; };
 		74C44321703F2371D482B7CD /* LiiFTitleCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFTitleCellView.h; sourceTree = "<group>"; };
 		74C4433A7D32DFFA976A2AEB /* UIColor+LiiFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LiiFUtils.m"; sourceTree = "<group>"; };
+		74C4433BBA019DF08BE62839 /* LiiFDealCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFDealCellView.m; sourceTree = "<group>"; };
 		74C4441CB2CE97FAA5F2AE2B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
 		74C44457CFB314BD216C3D46 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		74C4447E1597EEBDA62B2C29 /* LiiFBusinessPlaceCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFBusinessPlaceCollectionFlowLayout.h; sourceTree = "<group>"; };
@@ -271,6 +274,8 @@
 				74C44C492C73A5194BA1A834 /* LiiFInfoCellView.h */,
 				74C44851706974DCF7B26390 /* LiiFToolbarCellView.m */,
 				74C44D0E811F0AB9F22C1D4C /* LiiFToolbarCellView.h */,
+				74C4433BBA019DF08BE62839 /* LiiFDealCellView.m */,
+				74C4406612C0F2A96882A471 /* LiiFDealCellView.h */,
 			);
 			path = CollectionViewUtils;
 			sourceTree = "<group>";
@@ -449,6 +454,7 @@
 				74C445EF8FA6C8D548D2ABE5 /* LiiFInfoCellView.m in Sources */,
 				43FD676818DE7E5000B6FA88 /* LiiffeeBusinessAnnotation.m in Sources */,
 				74C44D6E413C2A250A0BED0C /* LiiFToolbarCellView.m in Sources */,
+				74C441ADE5B9084D4A6D4A40 /* LiiFDealCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

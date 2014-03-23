@@ -30,7 +30,6 @@
 		74C445EF8FA6C8D548D2ABE5 /* LiiFInfoCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C445273A98CB1765801D2E /* LiiFInfoCellView.m */; };
 		74C4461E04BED5FA25D6B722 /* UIFont+LiiFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C447453C61084FE6D8B6E2 /* UIFont+LiiFUtils.m */; };
 		74C44629AB656270A3C38726 /* LiiFBusinessPlaceViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4470B4F0AB51CD5355846 /* LiiFBusinessPlaceViewModel.m */; };
-		74C446D8C2B0C2C952EDC249 /* InstagramEngine+Liiffee.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C44255BFF190CBED74B495 /* InstagramEngine+Liiffee.m */; };
 		74C447014D4D3C7B753C5C47 /* LiiFBusinessPlaceCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4449E36819DC24F1FE9D7 /* LiiFBusinessPlaceCollectionFlowLayout.m */; };
 		74C44714C48D0EE6A6E4669E /* LiiFImageCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4462C6C9121A3D84D4871 /* LiiFImageCellView.m */; };
 		74C4477F889F88044189C2C7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C44457CFB314BD216C3D46 /* CoreData.framework */; };
@@ -75,7 +74,6 @@
 		31E5EF2D18DDF79600B7541D /* IOSLiiffeeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSLiiffeeTests.m; sourceTree = "<group>"; };
 		74C44098919921A0B19ED4D1 /* LiiFMapViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFMapViewModel.m; sourceTree = "<group>"; };
 		74C44170F8F52248DA5225AD /* LiiFBusinessPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFBusinessPlaceViewController.h; sourceTree = "<group>"; };
-		74C44255BFF190CBED74B495 /* InstagramEngine+Liiffee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "InstagramEngine+Liiffee.m"; sourceTree = "<group>"; };
 		74C44321703F2371D482B7CD /* LiiFTitleCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFTitleCellView.h; sourceTree = "<group>"; };
 		74C4433A7D32DFFA976A2AEB /* UIColor+LiiFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LiiFUtils.m"; sourceTree = "<group>"; };
 		74C4441CB2CE97FAA5F2AE2B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 		74C4492CD714C9A6BDF132FE /* LiiFBusinessPlaceViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFBusinessPlaceViewModel.h; sourceTree = "<group>"; };
 		74C44A15B951960B0DDCC283 /* EGOCache+NSArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EGOCache+NSArray.h"; sourceTree = "<group>"; };
 		74C44A1837591BFFCE122E65 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		74C44A2C826D037D2F0C6923 /* InstagramEngine+Liiffee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InstagramEngine+Liiffee.h"; sourceTree = "<group>"; };
 		74C44A435CD5001E7460B256 /* LiiF3rdPartyEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiF3rdPartyEngine.m; sourceTree = "<group>"; };
 		74C44A5020AC99253D6D52BE /* LiiFTitleCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFTitleCellView.m; sourceTree = "<group>"; };
 		74C44AEE2CED274A29687700 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -254,8 +251,6 @@
 			children = (
 				74C44A435CD5001E7460B256 /* LiiF3rdPartyEngine.m */,
 				74C44EC7AECE82C628FA2E6F /* LiiF3rdPartyEngine.h */,
-				74C44255BFF190CBED74B495 /* InstagramEngine+Liiffee.m */,
-				74C44A2C826D037D2F0C6923 /* InstagramEngine+Liiffee.h */,
 			);
 			path = 3rdPartyAccessors;
 			sourceTree = "<group>";
@@ -447,7 +442,6 @@
 				74C44714C48D0EE6A6E4669E /* LiiFImageCellView.m in Sources */,
 				74C445EF8FA6C8D548D2ABE5 /* LiiFInfoCellView.m in Sources */,
 				74C44D6E413C2A250A0BED0C /* LiiFToolbarCellView.m in Sources */,
-				74C446D8C2B0C2C952EDC249 /* InstagramEngine+Liiffee.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

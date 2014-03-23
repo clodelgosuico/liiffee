@@ -24,6 +24,12 @@
     if([object isKindOfClass:[InstagramMedia class]]){
         InstagramMedia *media = (InstagramMedia *) object;
         [self.imageView setImageWithURL:media.standardResolutionImageURL];
+        self.imageView.backgroundColor = [UIColor liifSubtleGray];
+        NSString *title = media.caption.text;
+        NSAttributedString *string = [[NSAttributedString alloc] initWithString:title
+                    attributes:[UIFont liifStringAttributesWithSize:14.0f withColor:[UIColor liifWhite]]];
+        self.titleLabel.attributedText = string;
+
     }
     else {
         NSString *title = @"";
@@ -35,7 +41,7 @@
         }
         self.imageView.backgroundColor = [UIColor liifSubtleGray];
         NSAttributedString *string = [[NSAttributedString alloc] initWithString:title
-                                                                     attributes:[UIFont liifStringAttributesWithSize:12.0f withColor:[UIColor liifDarkText]]];
+                            attributes:[UIFont liifStringAttributesWithSize:12.0f withColor:[UIColor liifDarkText]]];
         self.titleLabel.attributedText = string;
     }
 //    NSDictionary *foursquarePlace = (NSDictionary *)object;
@@ -45,16 +51,16 @@
 - (void)setupViews {
     [super setupViews];
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.titleLabel.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.3f];
 }
 
 - (void)setupLayout
 {
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView.top).with.offset(-0.0f);
         make.centerX.equalTo(self.contentView.centerX);
-        make.centerY.equalTo(self.contentView.centerY);
-        make.width.equalTo(self.contentView.width).with.offset(-16.0f);
-        make.height.equalTo(self.contentView.height).with.offset(-16.0f);
-
+        make.width.equalTo(self.contentView.width).with.offset(0.0f);
+        make.height.equalTo(@40.0f);
     }];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView);

@@ -150,7 +150,9 @@
         annotationView =  [[MKAnnotationView alloc] initWithAnnotation:annotation
                            reuseIdentifier:@"LiiffeeBusinessAnnotation"];
                                                        //reuseIdentifier:grayPinID];
-        annotationView.image = [UIImage imageNamed:@"RedPin"];
+        // FAKING randomly picking a pin
+        NSInteger randomNumber = arc4random() % 2;
+        annotationView.image = randomNumber==0 ? [UIImage imageNamed:@"GreenPin"] : [UIImage imageNamed:@"RedPin"];
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
         

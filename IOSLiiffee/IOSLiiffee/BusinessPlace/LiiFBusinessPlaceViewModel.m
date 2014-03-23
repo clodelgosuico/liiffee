@@ -57,7 +57,12 @@ static NSString* DealCellIdentifier = @"DealCell";
 {
     @weakify(self);
 //    [[LiiF3rdPartyEngine searchInstagramForFoursquarePlace:self.foursquarePlace] subscribeNext:^(id x) {
-    [[LiiF3rdPartyEngine instagramForTag:@"salads"] subscribeNext:^(id x) {
+    NSArray *tags = @[@"salad", @"salade",  @"saladsauce",
+//    @"saladselfie",@"salads",  @"saladsandwich", @"saladsaladsalad", @"saladshop",
+            @"saladsrock", @"saladsonsalads"];
+    NSInteger tag = arc4random() % tags.count;
+    NSLog(@"tag %@", tags[tag]);
+    [[LiiF3rdPartyEngine instagramForTag:tags[tag]] subscribeNext:^(id x) {
         @strongify(self);
         NSArray *mediaObjects = (NSArray *)x;
         self.instagramMediaObjects = mediaObjects;

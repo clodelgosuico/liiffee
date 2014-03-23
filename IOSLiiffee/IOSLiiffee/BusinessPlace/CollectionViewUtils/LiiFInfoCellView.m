@@ -9,6 +9,8 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
+@property (nonatomic, strong) UIView *labelBackgroundView;
+
 @end
 
 
@@ -22,8 +24,7 @@
     if (!self) return nil;
 
     // Configure self
-    self.backgroundColor = [UIColor liifBarelyGray];
-    self.layer.cornerRadius = 8.0f;
+    self.backgroundColor = [UIColor clearColor];
     [self setupViews];
     [self setupLayout];
 
@@ -32,13 +33,19 @@
 
 - (void)setupViews
 {
-    [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.labelBackgroundView];
+    [self.labelBackgroundView addSubview:self.titleLabel];
 }
 
 - (void)setupLayout
 {
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.labelBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView);
+    }];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.labelBackgroundView);
+        make.width.equalTo(self.labelBackgroundView.width).with.offset(-16.0f);
+        make.height.equalTo(self.labelBackgroundView.height).with.offset(-0.0f);
     }];
 }
 
@@ -52,6 +59,19 @@
     }
     return _titleLabel;
 }
+
+- (UIView *)labelBackgroundView {
+    if(!_labelBackgroundView){
+        _labelBackgroundView = [[UIView alloc] init];
+        _labelBackgroundView.translatesAutoresizingMaskIntoConstraints = NO;
+        _labelBackgroundView.backgroundColor = [UIColor liifBarelyGray];
+        _labelBackgroundView.layer.cornerRadius = 8.0f;
+    }
+    return _labelBackgroundView;
+}
+
+
+
 
 #pragma mark - Setting data object
 

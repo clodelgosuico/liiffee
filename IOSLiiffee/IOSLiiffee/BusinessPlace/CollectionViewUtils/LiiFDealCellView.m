@@ -114,9 +114,11 @@
                     attributes:[UIFont liifStringAttributesWithSize:14.0f withColor:[UIColor liifDarkText]]];
         self.titleLabel.attributedText = string;
 
+        NSInteger number = arc4random() % 4;
         NSURL *url = [[NSURL alloc] initWithString:info[@"url"]];
 //        [self.imageView setImageWithURL:url];
-        self.imageView.image = [UIImage imageNamed:@"SaladSample"];
+        NSString *image = [NSString stringWithFormat:@"SaladSample%d", number];
+        self.imageView.image = [UIImage imageNamed:image];
     }
 }
 

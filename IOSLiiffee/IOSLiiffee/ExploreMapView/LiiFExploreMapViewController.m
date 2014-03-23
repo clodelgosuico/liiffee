@@ -6,6 +6,7 @@
 #import "LiiFExploreMapViewController.h"
 #import "LiiFMapViewModel.h"
 #import "LiiFBusinessPlaceViewController.h"
+#import "LiiffeeBusinessAnnotation.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
@@ -19,7 +20,7 @@
 
 - (void)showFoursquarePlaces;
 
-- (NSDictionary *)foursquarePlaceForAnnotation:(MKPointAnnotation *)annotation;
+//- (NSDictionary *)foursquarePlaceForAnnotation:(MKPointAnnotation *)annotation;
 @end
 
 @implementation LiiFExploreMapViewController {
@@ -140,17 +141,27 @@
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    return nil;
+    //return nil;
     // XXX TODO will show the custom pin when we can show the title view, and a button, etc
     static NSString *grayPinID = @"grayPinId";
     static NSString *greenPinID = @"greenPinId";
     MKAnnotationView *annotationView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:grayPinID];
     if(!annotationView){
         annotationView =  [[MKAnnotationView alloc] initWithAnnotation:annotation
-                                                       reuseIdentifier:grayPinID];;
+                           reuseIdentifier:@"LiiffeeBusinessAnnotation"];
+                                                       //reuseIdentifier:grayPinID];
         annotationView.image = [UIImage imageNamed:@"MapGray"];
-    }
+        annotationView.enabled = YES;
+        annotationView.canShowCallout = YES;
+        
+        UIButton* button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        
+//        [button addTarget:self action:@selector(tapInfo:) forControlEvents:
+//         UIControlEventTouchUpInside];
+        annotationView.rightCalloutAccessoryView = button;
+//        annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 
+    }
     return annotationView;
 }
 
@@ -171,13 +182,35 @@
 #pragma mark - Map delegate
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    
+    NSLog(@"selected ? %d", view.selected);
 
-//    if([view isKindOfClass:[MKPointAnnotation class]]){
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    NSLog(@"from %@", view);
+    if([view.annotation isKindOfClass:[MKPointAnnotation class]]){
+        NSDictionary *place = [self foursquarePlaceForAnnotation:view];
+        [self showBusinessPlaceViewForFoursquarePlace:place];
+//        [self.mapView deselectAnnotation:view.annotation animated:NO];
+    }
+
+}
+
+- (void)tapInfo:(id)sender
+{
+    NSLog(@"from %@", sender);
+}
+
+- (void)mapView:(MKMapView *)mapView tapInfo:(MKAnnotationView *)view {
+    
+    //    if([view isKindOfClass:[MKPointAnnotation class]]){
     NSDictionary *place = [self foursquarePlaceForAnnotation:view];
     [self showBusinessPlaceViewForFoursquarePlace:place];
     [self.mapView deselectAnnotation:view animated:NO];
-//    }
-
+    //    }
+    
 }
 
 @end

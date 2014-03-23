@@ -179,7 +179,6 @@
 {
     __block NSDictionary *result = nil;
     [self.mapAnnotations enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        NSLog(@"comparing %p %p", obj, annotationView.annotation);
         if(obj == annotationView.annotation || [obj isEqual:annotationView.annotation]){
             NSString *placeId = (NSString *)key;
             result = [self.viewModel foursquarePlaceWithId:placeId];

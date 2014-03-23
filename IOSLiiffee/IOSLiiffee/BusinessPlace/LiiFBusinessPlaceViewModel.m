@@ -54,7 +54,8 @@ static NSString* DealCellIdentifier = @"DealCell";
 - (void)getInstagramMedia
 {
     @weakify(self);
-    [[LiiF3rdPartyEngine searchInstagramForFoursquarePlace:self.foursquarePlace] subscribeNext:^(id x) {
+//    [[LiiF3rdPartyEngine searchInstagramForFoursquarePlace:self.foursquarePlace] subscribeNext:^(id x) {
+    [[LiiF3rdPartyEngine instagramForTag:@"salads"] subscribeNext:^(id x) {
         @strongify(self);
         NSArray *mediaObjects = (NSArray *)x;
         self.instagramMediaObjects = mediaObjects;

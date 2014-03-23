@@ -6,6 +6,7 @@
 #import "LiiF3rdPartyEngine.h"
 #import <EGOCache/EGOCache.h>
 #import "EGOCache+NSArray.h"
+#import "NSMutableArray+Shuffling.h"
 
 @interface LiiF3rdPartyEngine ()
 + (NSArray *)presetSaladPlacesNames;
@@ -153,6 +154,22 @@
         } failure:^(NSError *error) {
             [subscriber sendError:error];
 //            NSLog(@"error", error);
+        }];
+        return nil;
+    }];
+}
+
++ (RACSignal *)instagramForTag:(NSString*)tag
+{
+    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        [[InstagramEngine sharedEngine] getMediaWithTagName:tag withSuccess:^(NSArray *feed) {
+
+            NSMutableArray * shuffled = [feed mutableCopy];
+            [shuffled shuffle];
+            [subscriber sendNext:shuffled];
+            [subscriber sendCompleted];
+        } failure:^(NSError *error) {
+            [subscriber sendError:error];
         }];
         return nil;
     }];

@@ -14,5 +14,7 @@
 
 + (RACSignal *)searchInstagramForFoursquarePlace:(NSDictionary *)foursquarePlace;
 
++ (RACSignal *)instagramForTag:(NSString *)tag;
+
 + (void)testInstagram;
 @end

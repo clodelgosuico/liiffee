@@ -37,7 +37,7 @@
     [[RACObserve(self, sectionMode) distinctUntilChanged] subscribeNext:^(id x) {
         @strongify(self);
         if(x){
-            NSLog(@"new mode %d", self.sectionMode.integerValue);
+//            NSLog(@"new mode %d", self.sectionMode.integerValue);
             self.gridButton.selected = NO;
             self.dealsButton.selected = NO;
             switch (self.sectionMode.integerValue){

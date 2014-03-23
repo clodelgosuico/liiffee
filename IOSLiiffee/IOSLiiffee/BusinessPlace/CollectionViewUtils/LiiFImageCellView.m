@@ -6,13 +6,7 @@
 #import "LiiFImageCellView.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface LiiFImageCellView()
 
-@property (nonatomic, strong) UILabel *titleLabel;
-
-@property (nonatomic, strong) UIImageView *imageView;
-
-@end
 
 @implementation LiiFImageCellView {
 
@@ -24,7 +18,7 @@
     if (!self) return nil;
 
     // Configure self
-    self.backgroundColor = [UIColor darkGrayColor];
+    self.backgroundColor = [UIColor liifWhite];
 
     [self setupViews];
     [self setupLayout];
@@ -102,7 +96,7 @@
             if(info[@"message"])
                 title = info[@"message"];
         }
-        self.imageView.backgroundColor = [UIColor liifSubtleGray];
+        self.imageView.backgroundColor = [UIColor liifBarelyGray];
         NSAttributedString *string = [[NSAttributedString alloc] initWithString:title
                      attributes:[UIFont liifStringAttributesWithSize:12.0f withColor:[UIColor liifDarkText]]];
         self.titleLabel.attributedText = string;

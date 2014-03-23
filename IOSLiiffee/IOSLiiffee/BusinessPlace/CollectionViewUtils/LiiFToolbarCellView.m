@@ -40,9 +40,15 @@
 //            NSLog(@"new mode %d", self.sectionMode.integerValue);
             self.gridButton.selected = NO;
             self.dealsButton.selected = NO;
+            self.listButton.selected = NO;
+            self.mapButton.selected = NO;
             switch (self.sectionMode.integerValue){
                 case 0:{
                     self.gridButton.selected = YES;
+                    break;
+                }
+                case 1:{
+                    self.listButton.selected = YES;
                     break;
                 }
                 case 2:{
@@ -64,6 +70,13 @@
         @strongify(self);
         [self.toolbarDelegate liiFToolbarCellView:self didSelectDealsMode:YES];
         self.sectionMode = @2;
+        return [RACSignal empty];
+    }];
+
+    self.listButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        [self.toolbarDelegate liiFToolbarCellView:self didSelectListMode:YES];
+        self.sectionMode = @1;
         return [RACSignal empty];
     }];
 

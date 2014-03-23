@@ -52,7 +52,11 @@
     @weakify(self);
     [RACObserve(self.viewModel, sections) subscribeNext:^(id x) {
         @strongify(self);
-        [self.collectionView reloadData];
+        if(self.collectionView.visibleCells.count==0)
+            [self.collectionView reloadData];
+        else{
+            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:3]];
+        }
     }];
 }
 
@@ -101,6 +105,13 @@
         @strongify(self);
         NSLog(@"deals selected ");
         self.viewModel.bottomSectionMode = @2;
+    }];
+
+    [[self rac_signalForSelector:@selector(liiFToolbarCellView:didSelectListMode:)
+                    fromProtocol:@protocol(LiiFToolbarCellViewDelegate)] subscribeNext:^(id x) {
+        @strongify(self);
+        NSLog(@"deals selected ");
+        self.viewModel.bottomSectionMode = @1;
     }];
 
     // Need to "reset" the cached values of respondsToSelector: of UIKit

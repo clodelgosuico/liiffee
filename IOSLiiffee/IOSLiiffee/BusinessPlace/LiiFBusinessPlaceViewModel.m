@@ -10,11 +10,13 @@
 #import "LiiFToolbarCellView.h"
 #import "LiiF3rdPartyEngine.h"
 #import "LiiFDealCellView.h"
+#import "LiiFLargeImageCellView.h"
 
 static NSString* TitleCellIdentifier = @"TitleCell";
 static NSString* InfoCellIdentifier = @"InfoCell";
 static NSString* ToolbarCellIdentifier = @"ToolbarCell";
 static NSString* ImageCellIdentifier = @"ImageCell";
+static NSString* LargeImageCellIdentifier = @"LargeImageCell";
 static NSString* DealCellIdentifier = @"DealCell";
 
 
@@ -75,17 +77,10 @@ static NSString* DealCellIdentifier = @"DealCell";
         [sections addObject:infoSection];
         [sections addObject:toolbarSection];
 
-        if(self.bottomSectionMode.integerValue==0){
+        if(self.bottomSectionMode.integerValue==0
+           || self.bottomSectionMode.integerValue==1){
             NSMutableArray *imagesSection = [
                     @[@{@"message" : @"Loading..."},
-    //                  @{@"url" : @""},
-    //                  @{@"url" : @""},
-    //                  @{@"url" : @""},
-    //                  @{@"url" : @""},
-    //                  @{@"url" : @""},
-    //                  @{@"url" : @""},
-    //                  @{@"url" : @""},
-    //                  @{@"url" : @""},
                     ]
                     mutableCopy];
             if(self.instagramMediaObjects){
@@ -120,6 +115,7 @@ static NSString* DealCellIdentifier = @"DealCell";
     [collectionView registerClass:[LiiFInfoCellView class] forCellWithReuseIdentifier:InfoCellIdentifier];
     [collectionView registerClass:[LiiFToolbarCellView class] forCellWithReuseIdentifier:ToolbarCellIdentifier];
     [collectionView registerClass:[LiiFImageCellView class] forCellWithReuseIdentifier:ImageCellIdentifier];
+    [collectionView registerClass:[LiiFLargeImageCellView class] forCellWithReuseIdentifier:LargeImageCellIdentifier];
     [collectionView registerClass:[LiiFDealCellView class] forCellWithReuseIdentifier:DealCellIdentifier];
 }
 
@@ -142,6 +138,9 @@ static NSString* DealCellIdentifier = @"DealCell";
             switch (self.bottomSectionMode.integerValue){
                 case 0:{
                     return ImageCellIdentifier;
+                }
+                case 1:{
+                    return LargeImageCellIdentifier;
                 }
                 case 2:{
                     return DealCellIdentifier;
@@ -175,6 +174,9 @@ static NSString* DealCellIdentifier = @"DealCell";
             switch (self.bottomSectionMode.integerValue){
                 case 0:{// grid
                     return CGSizeMake(100.0f, 100.0f);;
+                }
+                case 1:{// list
+                    return CGSizeMake(screenWidth, screenWidth);;
                 }
                 case 2:{// deals
                     return CGSizeMake(screenWidth, 56.0f);

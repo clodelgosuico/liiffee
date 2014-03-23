@@ -87,11 +87,15 @@
     if(!_buttonView){
         _buttonView = [UIButton buttonWithType:UIButtonTypeCustom];
         NSAttributedString *string = [[NSAttributedString alloc] initWithString:@"Order"
-                         attributes:[UIFont liifStringAttributesWithSize:16.0f withColor:[UIColor liifDarkText]]];
-        _buttonView.backgroundColor = [UIColor liifActiveIcon];
+                         attributes:[UIFont liifStringAttributesWithSize:16.0f withColor:[UIColor liifGreen]]];
+        NSAttributedString *stringHi = [[NSAttributedString alloc] initWithString:@"Order"
+                         attributes:[UIFont liifStringAttributesWithSize:16.0f withColor:[UIColor liifSubtleGray]]];
+//        _buttonView.backgroundColor = [UIColor liifGreen];
+        _buttonView.adjustsImageWhenHighlighted = YES;
         _buttonView.layer.cornerRadius = 4.0f;
         _buttonView.contentEdgeInsets = UIEdgeInsetsMake(4.0f, 8.0f, 4.0f, 8.0f);
         [_buttonView setAttributedTitle:string forState:UIControlStateNormal];
+        [_buttonView setAttributedTitle:stringHi forState:UIControlStateHighlighted];
     }
     return _buttonView;
 }

@@ -5,10 +5,24 @@
 
 #import <Foundation/Foundation.h>
 
+@class LiiFImageCellView;
+
+
 /**
 * CollectionViewCell for an instagram object
 */
 @interface LiiFImageCellView : UICollectionViewCell
 
 - (void)setDataObject:(id)object;
+@end
+
+@interface LiiFImageCellView()
+
+@property (nonatomic, strong) UILabel *titleLabel;
+
+@property (nonatomic, strong) UIImageView *imageView;
+
+- (void)setupViews;
+
+- (void)setupLayout;
 @end

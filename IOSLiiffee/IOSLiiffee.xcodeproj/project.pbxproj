@@ -25,6 +25,7 @@
 		74C44220FF1AB9096F039F0B /* EGOCache+NSArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C44E43665FD4338F051702 /* EGOCache+NSArray.m */; };
 		74C4426A0E2F4F79E75149D4 /* UIColor+LiiFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4433A7D32DFFA976A2AEB /* UIColor+LiiFUtils.m */; };
 		74C4432B034E1FC8322AE865 /* LiiFMapViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C44098919921A0B19ED4D1 /* LiiFMapViewModel.m */; };
+		74C4441D2B14489D5074ACDB /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4430001198B3FD3F7EFDF /* NSMutableArray+Shuffling.m */; };
 		74C4444FA6EDC0A96EB7C3FA /* LiiF3rdPartyEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C44A435CD5001E7460B256 /* LiiF3rdPartyEngine.m */; };
 		74C444B9A1013E5F4A12AD68 /* LiiFBusinessPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C44B88606C654CFA544676 /* LiiFBusinessPlaceViewController.m */; };
 		74C4455338DAB1D625A9357F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C44CC8DAB3AE7FCE46EEBB /* MapKit.framework */; };
@@ -35,6 +36,7 @@
 		74C447014D4D3C7B753C5C47 /* LiiFBusinessPlaceCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4449E36819DC24F1FE9D7 /* LiiFBusinessPlaceCollectionFlowLayout.m */; };
 		74C44714C48D0EE6A6E4669E /* LiiFImageCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4462C6C9121A3D84D4871 /* LiiFImageCellView.m */; };
 		74C4477F889F88044189C2C7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C44457CFB314BD216C3D46 /* CoreData.framework */; };
+		74C4482CC25BFE603F713C6E /* LiiFLargeImageCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4438A9E7A6588B4878BF0 /* LiiFLargeImageCellView.m */; };
 		74C448D7F10C3892C0168E37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C44F86856576F4427F190F /* CoreLocation.framework */; };
 		74C4495F11B0A8EF2E846EB4 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C44D56C5D5BBA463FB2E88 /* CoreImage.framework */; };
 		74C44B3FB57ADCE6C7B4084D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C449213526D5FEFCEA60B8 /* MobileCoreServices.framework */; };
@@ -79,9 +81,11 @@
 		74C4406612C0F2A96882A471 /* LiiFDealCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFDealCellView.h; sourceTree = "<group>"; };
 		74C44098919921A0B19ED4D1 /* LiiFMapViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFMapViewModel.m; sourceTree = "<group>"; };
 		74C44170F8F52248DA5225AD /* LiiFBusinessPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFBusinessPlaceViewController.h; sourceTree = "<group>"; };
+		74C4430001198B3FD3F7EFDF /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
 		74C44321703F2371D482B7CD /* LiiFTitleCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFTitleCellView.h; sourceTree = "<group>"; };
 		74C4433A7D32DFFA976A2AEB /* UIColor+LiiFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LiiFUtils.m"; sourceTree = "<group>"; };
 		74C4433BBA019DF08BE62839 /* LiiFDealCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFDealCellView.m; sourceTree = "<group>"; };
+		74C4438A9E7A6588B4878BF0 /* LiiFLargeImageCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFLargeImageCellView.m; sourceTree = "<group>"; };
 		74C4441CB2CE97FAA5F2AE2B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
 		74C44457CFB314BD216C3D46 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		74C4447E1597EEBDA62B2C29 /* LiiFBusinessPlaceCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFBusinessPlaceCollectionFlowLayout.h; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 		74C44851706974DCF7B26390 /* LiiFToolbarCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFToolbarCellView.m; sourceTree = "<group>"; };
 		74C449213526D5FEFCEA60B8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		74C4492CD714C9A6BDF132FE /* LiiFBusinessPlaceViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFBusinessPlaceViewModel.h; sourceTree = "<group>"; };
+		74C449C85A838BA6157D97C9 /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffling.h"; sourceTree = "<group>"; };
 		74C44A15B951960B0DDCC283 /* EGOCache+NSArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EGOCache+NSArray.h"; sourceTree = "<group>"; };
 		74C44A1837591BFFCE122E65 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		74C44A435CD5001E7460B256 /* LiiF3rdPartyEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiF3rdPartyEngine.m; sourceTree = "<group>"; };
@@ -114,6 +119,7 @@
 		74C44EC4BAC35F69633A7475 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		74C44EC7AECE82C628FA2E6F /* LiiF3rdPartyEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiF3rdPartyEngine.h; sourceTree = "<group>"; };
 		74C44F86856576F4427F190F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		74C44F9F4A0740DBD5DC82A3 /* LiiFLargeImageCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFLargeImageCellView.h; sourceTree = "<group>"; };
 		E098CB18A80340EBB04138CB /* libPods-IOSLiiffee.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IOSLiiffee.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE4E21B45C004EE4B98BFA3A /* Pods-IOSLiiffee.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSLiiffee.xcconfig"; path = "Pods/Pods-IOSLiiffee.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -248,6 +254,8 @@
 				74C4433A7D32DFFA976A2AEB /* UIColor+LiiFUtils.m */,
 				74C44E685B034CC47A2DDA2F /* UIFont+LiiFUtils.h */,
 				74C447453C61084FE6D8B6E2 /* UIFont+LiiFUtils.m */,
+				74C4430001198B3FD3F7EFDF /* NSMutableArray+Shuffling.m */,
+				74C449C85A838BA6157D97C9 /* NSMutableArray+Shuffling.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -276,6 +284,8 @@
 				74C44D0E811F0AB9F22C1D4C /* LiiFToolbarCellView.h */,
 				74C4433BBA019DF08BE62839 /* LiiFDealCellView.m */,
 				74C4406612C0F2A96882A471 /* LiiFDealCellView.h */,
+				74C4438A9E7A6588B4878BF0 /* LiiFLargeImageCellView.m */,
+				74C44F9F4A0740DBD5DC82A3 /* LiiFLargeImageCellView.h */,
 			);
 			path = CollectionViewUtils;
 			sourceTree = "<group>";
@@ -455,6 +465,8 @@
 				43FD676818DE7E5000B6FA88 /* LiiffeeBusinessAnnotation.m in Sources */,
 				74C44D6E413C2A250A0BED0C /* LiiFToolbarCellView.m in Sources */,
 				74C441ADE5B9084D4A6D4A40 /* LiiFDealCellView.m in Sources */,
+				74C4441D2B14489D5074ACDB /* NSMutableArray+Shuffling.m in Sources */,
+				74C4482CC25BFE603F713C6E /* LiiFLargeImageCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

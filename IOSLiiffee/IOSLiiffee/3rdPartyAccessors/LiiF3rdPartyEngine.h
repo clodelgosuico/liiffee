@@ -10,4 +10,9 @@
 
 
 + (RACSignal *)presetFoursquareSaladPlaces;
+
+
++ (RACSignal *)searchInstagramForFoursquarePlace:(NSDictionary *)foursquarePlace;
+
++ (void)testInstagram;
 @end

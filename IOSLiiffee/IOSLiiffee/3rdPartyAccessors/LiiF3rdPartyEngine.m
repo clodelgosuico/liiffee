@@ -140,11 +140,35 @@
 
 #pragma mark - Instagram pictures
 
-+ (void)searchInstagramForFoursquarePlace:(NSString *)foursquareId
++ (RACSignal *)searchInstagramForFoursquarePlace:(NSDictionary *)foursquarePlace
 {
-//    [InstagramEngine sharedEngine];
+    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        CGFloat lat = [[foursquarePlace valueForKeyPath:@"location.lat"] floatValue];
+        CGFloat lng = [[foursquarePlace valueForKeyPath:@"location.lng"] floatValue];
+        CLLocationCoordinate2D coords = CLLocationCoordinate2DMake(lat, lng);
+        [[InstagramEngine sharedEngine] getMediaAtLocation:coords withSuccess:^(NSArray *media) {
+            [subscriber sendNext:media];
+            [subscriber sendCompleted];
+//            NSLog(@"media %d", media.count);
+        } failure:^(NSError *error) {
+            [subscriber sendError:error];
+//            NSLog(@"error", error);
+        }];
+        return nil;
+    }];
 }
 
++ (void)testInstagram
+{
+    [[LiiF3rdPartyEngine presetFoursquareSaladPlaces] subscribeNext:^(id x) {
+        NSArray *places = (NSArray *) x;
+        NSDictionary *place = places[0];
+        [[LiiF3rdPartyEngine searchInstagramForFoursquarePlace:place] subscribeNext:^(id x) {
+            NSArray *instaMedias = (NSArray *)x;
+//            NSLog(@"media %d", instaMedias.count);
+        }];
+    }];
+}
 /**
 * Foursquare: Search for a place results
 {

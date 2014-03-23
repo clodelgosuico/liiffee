@@ -6,9 +6,10 @@
 #import "LiiFBusinessPlaceViewController.h"
 #import "LiiFBusinessPlaceViewModel.h"
 #import "LiiFBusinessPlaceCollectionFlowLayout.h"
+#import "LiiFToolbarCellView.h"
 
 @interface LiiFBusinessPlaceViewController()<UICollectionViewDelegateFlowLayout,
-        UICollectionViewDelegate, UICollectionViewDataSource>
+        UICollectionViewDelegate, UICollectionViewDataSource, LiiFToolbarCellViewDelegate>
 
 @property (nonatomic, strong) LiiFBusinessPlaceViewModel *viewModel;
 
@@ -73,6 +74,7 @@
 - (void)setupViewModelConnections
 {
     @weakify(self);
+
 //    [RACObserve(self.viewModel, topCategories) subscribeNext:^(id x) {
 //        @strongify(self);
 //        [self.collectionView reloadData];
@@ -87,6 +89,20 @@
 //                StuiProductsListViewController *viewController = [[StuiProductsListViewController alloc] init];
 //                [self.navigationController pushViewController:viewController animated:YES];
 //            }];
+    [[self rac_signalForSelector:@selector(liiFToolbarCellView:didSelectGridMode:)
+                    fromProtocol:@protocol(LiiFToolbarCellViewDelegate)] subscribeNext:^(id x) {
+        @strongify(self);
+        NSLog(@"grid selected ");
+        self.viewModel.bottomSectionMode = @0;
+    }];
+
+    [[self rac_signalForSelector:@selector(liiFToolbarCellView:didSelectDealsMode:)
+                    fromProtocol:@protocol(LiiFToolbarCellViewDelegate)] subscribeNext:^(id x) {
+        @strongify(self);
+        NSLog(@"deals selected ");
+        self.viewModel.bottomSectionMode = @2;
+    }];
+
     // Need to "reset" the cached values of respondsToSelector: of UIKit
     self.collectionView.delegate = self;
 }
@@ -139,6 +155,9 @@
 //                               attributes:[UIFont liifStringAttributesWithSize:26.0f
 //                                             withColor:[UIColor liifDarkText]]];
 //        [cell addSubview:label];
+    }
+    if([cell isKindOfClass:[LiiFToolbarCellView class]]){
+        [(LiiFToolbarCellView *) cell setToolbarDelegate:self];
     }
     return cell;
 }

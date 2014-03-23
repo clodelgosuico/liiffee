@@ -26,7 +26,7 @@ static NSString* DealCellIdentifier = @"DealCell";
     self = [super init];
     if(!self) return nil;
 
-    self.bottomSectionMode = @2;
+    self.bottomSectionMode = @0;
 
     @weakify(self);
 
@@ -40,6 +40,12 @@ static NSString* DealCellIdentifier = @"DealCell";
         [self getInstagramMedia];
     }];
 
+    [[RACObserve(self, bottomSectionMode) distinctUntilChanged] subscribeNext:^(id x) {
+        @strongify(self);
+      if(x != nil && self.active){
+          [self prepareData];
+      }
+    }];
     self.foursquarePlace = foursquarePlace;
 
     return self;

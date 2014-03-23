@@ -33,6 +33,43 @@
     [self setupViews];
     [self setupLayout];
 
+    @weakify(self);
+    [[RACObserve(self, sectionMode) distinctUntilChanged] subscribeNext:^(id x) {
+        @strongify(self);
+        if(x){
+            NSLog(@"new mode %d", self.sectionMode.integerValue);
+            self.gridButton.selected = NO;
+            self.dealsButton.selected = NO;
+            switch (self.sectionMode.integerValue){
+                case 0:{
+                    self.gridButton.selected = YES;
+                    break;
+                }
+                case 2:{
+                    self.dealsButton.selected = YES;
+                    break;
+                }
+            }
+        }
+    }];
+
+    self.gridButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        [self.toolbarDelegate liiFToolbarCellView:self didSelectGridMode:YES];
+        self.sectionMode = @0;
+        return [RACSignal empty];
+    }];
+
+    self.dealsButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        [self.toolbarDelegate liiFToolbarCellView:self didSelectDealsMode:YES];
+        self.sectionMode = @2;
+        return [RACSignal empty];
+    }];
+
+    // default is grid
+    self.sectionMode = @0;
+
     return self;
 }
 
@@ -97,6 +134,7 @@
         _gridButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_gridButton setImage:[UIImage imageNamed:@"GridGray"] forState:UIControlStateNormal];
         [_gridButton setImage:[UIImage imageNamed:@"GridGreen"] forState:UIControlStateHighlighted];
+        [_gridButton setImage:[UIImage imageNamed:@"GridGreen"] forState:UIControlStateSelected];
 //        _gridButton.backgroundColor = [UIColor randomColor];
     }
     return _gridButton;
@@ -108,6 +146,7 @@
         _listButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_listButton setImage:[UIImage imageNamed:@"ListGray"] forState:UIControlStateNormal];
         [_listButton setImage:[UIImage imageNamed:@"ListGreen"] forState:UIControlStateHighlighted];
+        [_listButton setImage:[UIImage imageNamed:@"ListGreen"] forState:UIControlStateSelected];
 //        _listButton.backgroundColor = [UIColor randomColor];
     }
     return _listButton;
@@ -119,6 +158,7 @@
         _mapButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_mapButton setImage:[UIImage imageNamed:@"MapGray"] forState:UIControlStateNormal];
         [_mapButton setImage:[UIImage imageNamed:@"MapGreen"] forState:UIControlStateHighlighted];
+        [_mapButton setImage:[UIImage imageNamed:@"MapGreen"] forState:UIControlStateSelected];
 //        _mapButton.backgroundColor = [UIColor randomColor];
     }
     return _mapButton;
@@ -130,6 +170,7 @@
         _dealsButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_dealsButton setImage:[UIImage imageNamed:@"DealsGray"] forState:UIControlStateNormal];
         [_dealsButton setImage:[UIImage imageNamed:@"DealsGreen"] forState:UIControlStateHighlighted];
+        [_dealsButton setImage:[UIImage imageNamed:@"DealsGreen"] forState:UIControlStateSelected];
 //        _dealsButton.backgroundColor = [UIColor randomColor];
     }
     return _dealsButton;

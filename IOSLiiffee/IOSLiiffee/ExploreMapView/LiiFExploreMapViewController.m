@@ -150,7 +150,7 @@
         annotationView =  [[MKAnnotationView alloc] initWithAnnotation:annotation
                            reuseIdentifier:@"LiiffeeBusinessAnnotation"];
                                                        //reuseIdentifier:grayPinID];
-        annotationView.image = [UIImage imageNamed:@"MapGray"];
+        annotationView.image = [UIImage imageNamed:@"RedPin"];
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
         

@@ -7,6 +7,7 @@
 #import "LiiFTitleCellView.h"
 #import "LiiFImageCellView.h"
 #import "LiiFInfoCellView.h"
+#import "LiiFToolbarCellView.h"
 
 static NSString* TitleCellIdentifier = @"TitleCell";
 static NSString* InfoCellIdentifier = @"InfoCell";
@@ -72,7 +73,7 @@ static NSString* ImageCellIdentifier = @"ImageCell";
 {
     [collectionView registerClass:[LiiFTitleCellView class] forCellWithReuseIdentifier:TitleCellIdentifier];
     [collectionView registerClass:[LiiFInfoCellView class] forCellWithReuseIdentifier:InfoCellIdentifier];
-    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ToolbarCellIdentifier];
+    [collectionView registerClass:[LiiFToolbarCellView class] forCellWithReuseIdentifier:ToolbarCellIdentifier];
     [collectionView registerClass:[LiiFImageCellView class] forCellWithReuseIdentifier:ImageCellIdentifier];
 }
 
@@ -114,7 +115,7 @@ static NSString* ImageCellIdentifier = @"ImageCell";
         }
         case 2:
         {
-            return CGSizeMake(screenWidth, 44.0f);;
+            return CGSizeMake(screenWidth + 20.0f, 44.0f);;
         }
         case 3:
         {

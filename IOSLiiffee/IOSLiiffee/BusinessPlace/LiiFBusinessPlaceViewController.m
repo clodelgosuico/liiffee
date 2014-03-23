@@ -131,13 +131,13 @@
         [cell performSelector:@selector(setDataObject:) withObject:object];
     }
     else{
-        cell.backgroundColor = [UIColor liifBarelyGray];
-        UILabel *label = [[UILabel alloc] initWithFrame:cell.bounds];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.attributedText = [[NSAttributedString alloc] initWithString:@"?"
-                               attributes:[UIFont liifStringAttributesWithSize:26.0f
-                                             withColor:[UIColor liifDarkText]]];
-        [cell addSubview:label];
+//        cell.backgroundColor = [UIColor liifBarelyGray];
+//        UILabel *label = [[UILabel alloc] initWithFrame:cell.bounds];
+//        label.textAlignment = NSTextAlignmentCenter;
+//        label.attributedText = [[NSAttributedString alloc] initWithString:@"?"
+//                               attributes:[UIFont liifStringAttributesWithSize:26.0f
+//                                             withColor:[UIColor liifDarkText]]];
+//        [cell addSubview:label];
     }
     return cell;
 }

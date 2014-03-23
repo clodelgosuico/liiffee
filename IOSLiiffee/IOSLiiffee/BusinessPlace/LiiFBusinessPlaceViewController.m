@@ -42,6 +42,8 @@
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
+    self.title = self.viewModel.foursquarePlace[@"name"];
+
     [self setupLayout];
     [self setupViewModelConnections];
 
@@ -95,7 +97,7 @@
     if(!_collectionView){
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.collectionViewFlowLayout];
         _collectionView.translatesAutoresizingMaskIntoConstraints = NO;
-        _collectionView.backgroundColor = [UIColor liifBarelyGray];
+        _collectionView.backgroundColor = [UIColor liifWhite];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         [self.viewModel registerCollectionViewCellClasses:_collectionView];

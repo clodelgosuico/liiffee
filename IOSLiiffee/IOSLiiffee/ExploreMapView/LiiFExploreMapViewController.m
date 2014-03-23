@@ -135,7 +135,7 @@
     }];
     // recenter map
     if(hasCenter)
-        [self.mapView setCenterCoordinate:center animated:YES];
+        [self.mapView setCenterCoordinate:center animated:NO];
 
 }
 

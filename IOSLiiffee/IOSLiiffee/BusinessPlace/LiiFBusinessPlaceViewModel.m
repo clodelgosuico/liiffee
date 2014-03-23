@@ -6,6 +6,7 @@
 #import "LiiFBusinessPlaceViewModel.h"
 #import "LiiFTitleCellView.h"
 #import "LiiFImageCellView.h"
+#import "LiiFInfoCellView.h"
 
 static NSString* TitleCellIdentifier = @"TitleCell";
 static NSString* InfoCellIdentifier = @"InfoCell";
@@ -70,7 +71,7 @@ static NSString* ImageCellIdentifier = @"ImageCell";
 - (void)registerCollectionViewCellClasses:(UICollectionView*)collectionView
 {
     [collectionView registerClass:[LiiFTitleCellView class] forCellWithReuseIdentifier:TitleCellIdentifier];
-    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:InfoCellIdentifier];
+    [collectionView registerClass:[LiiFInfoCellView class] forCellWithReuseIdentifier:InfoCellIdentifier];
     [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ToolbarCellIdentifier];
     [collectionView registerClass:[LiiFImageCellView class] forCellWithReuseIdentifier:ImageCellIdentifier];
 }
@@ -105,11 +106,11 @@ static NSString* ImageCellIdentifier = @"ImageCell";
     CGFloat screenWidth = 300.0f;
     switch (indexPath.section){
         case 0:{
-            return CGSizeMake(screenWidth, 80.0f);
+            return CGSizeMake(screenWidth, 40.0f);
         }
         case 1:
         {
-            return CGSizeMake(screenWidth, 120.0f);
+            return CGSizeMake(screenWidth - 8.0f, 120.0f);
         }
         case 2:
         {

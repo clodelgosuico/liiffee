@@ -27,6 +27,7 @@
 		74C444B9A1013E5F4A12AD68 /* LiiFBusinessPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C44B88606C654CFA544676 /* LiiFBusinessPlaceViewController.m */; };
 		74C4455338DAB1D625A9357F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C44CC8DAB3AE7FCE46EEBB /* MapKit.framework */; };
 		74C445B02FF31AD27A02B4B9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C44EC4BAC35F69633A7475 /* SystemConfiguration.framework */; };
+		74C445EF8FA6C8D548D2ABE5 /* LiiFInfoCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C445273A98CB1765801D2E /* LiiFInfoCellView.m */; };
 		74C4461E04BED5FA25D6B722 /* UIFont+LiiFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C447453C61084FE6D8B6E2 /* UIFont+LiiFUtils.m */; };
 		74C44629AB656270A3C38726 /* LiiFBusinessPlaceViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4470B4F0AB51CD5355846 /* LiiFBusinessPlaceViewModel.m */; };
 		74C447014D4D3C7B753C5C47 /* LiiFBusinessPlaceCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4449E36819DC24F1FE9D7 /* LiiFBusinessPlaceCollectionFlowLayout.m */; };
@@ -37,6 +38,7 @@
 		74C44B3FB57ADCE6C7B4084D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C449213526D5FEFCEA60B8 /* MobileCoreServices.framework */; };
 		74C44BA944B8602C73980077 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C444D19E80B3B977E3085F /* Security.framework */; };
 		74C44BDE7C3E14EDE73B4FA6 /* LiiFTitleCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C44A5020AC99253D6D52BE /* LiiFTitleCellView.m */; };
+		74C44D6E413C2A250A0BED0C /* LiiFToolbarCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C44851706974DCF7B26390 /* LiiFToolbarCellView.m */; };
 		74C44D738576DE440EB2FAAB /* LiiFExploreMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C4476348E1F05AF0F37CD6 /* LiiFExploreMapViewController.m */; };
 		74C44D930E95A79B9FDDA8B3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E5EF0A18DDF79600B7541D /* CoreGraphics.framework */; };
 		74C44FC569E56AC38B17C1C2 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C44A1837591BFFCE122E65 /* CoreText.framework */; };
@@ -79,10 +81,12 @@
 		74C4447E1597EEBDA62B2C29 /* LiiFBusinessPlaceCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFBusinessPlaceCollectionFlowLayout.h; sourceTree = "<group>"; };
 		74C4449E36819DC24F1FE9D7 /* LiiFBusinessPlaceCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFBusinessPlaceCollectionFlowLayout.m; sourceTree = "<group>"; };
 		74C444D19E80B3B977E3085F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		74C445273A98CB1765801D2E /* LiiFInfoCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFInfoCellView.m; sourceTree = "<group>"; };
 		74C4462C6C9121A3D84D4871 /* LiiFImageCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFImageCellView.m; sourceTree = "<group>"; };
 		74C4470B4F0AB51CD5355846 /* LiiFBusinessPlaceViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFBusinessPlaceViewModel.m; sourceTree = "<group>"; };
 		74C447453C61084FE6D8B6E2 /* UIFont+LiiFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+LiiFUtils.m"; sourceTree = "<group>"; };
 		74C4476348E1F05AF0F37CD6 /* LiiFExploreMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFExploreMapViewController.m; sourceTree = "<group>"; };
+		74C44851706974DCF7B26390 /* LiiFToolbarCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFToolbarCellView.m; sourceTree = "<group>"; };
 		74C449213526D5FEFCEA60B8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		74C4492CD714C9A6BDF132FE /* LiiFBusinessPlaceViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFBusinessPlaceViewModel.h; sourceTree = "<group>"; };
 		74C44A15B951960B0DDCC283 /* EGOCache+NSArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EGOCache+NSArray.h"; sourceTree = "<group>"; };
@@ -91,8 +95,10 @@
 		74C44A5020AC99253D6D52BE /* LiiFTitleCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFTitleCellView.m; sourceTree = "<group>"; };
 		74C44AEE2CED274A29687700 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		74C44B88606C654CFA544676 /* LiiFBusinessPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiiFBusinessPlaceViewController.m; sourceTree = "<group>"; };
+		74C44C492C73A5194BA1A834 /* LiiFInfoCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFInfoCellView.h; sourceTree = "<group>"; };
 		74C44CC8DAB3AE7FCE46EEBB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		74C44D02484554945611D47F /* LiiFMapViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFMapViewModel.h; sourceTree = "<group>"; };
+		74C44D0E811F0AB9F22C1D4C /* LiiFToolbarCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFToolbarCellView.h; sourceTree = "<group>"; };
 		74C44D56C5D5BBA463FB2E88 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		74C44D60A789A73E2258502A /* LiiFImageCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFImageCellView.h; sourceTree = "<group>"; };
 		74C44DBBC3E8B3CBD84C22FA /* LiiFExploreMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiiFExploreMapViewController.h; sourceTree = "<group>"; };
@@ -258,6 +264,10 @@
 				74C44A5020AC99253D6D52BE /* LiiFTitleCellView.m */,
 				74C4462C6C9121A3D84D4871 /* LiiFImageCellView.m */,
 				74C44D60A789A73E2258502A /* LiiFImageCellView.h */,
+				74C445273A98CB1765801D2E /* LiiFInfoCellView.m */,
+				74C44C492C73A5194BA1A834 /* LiiFInfoCellView.h */,
+				74C44851706974DCF7B26390 /* LiiFToolbarCellView.m */,
+				74C44D0E811F0AB9F22C1D4C /* LiiFToolbarCellView.h */,
 			);
 			path = CollectionViewUtils;
 			sourceTree = "<group>";
@@ -430,6 +440,8 @@
 				74C447014D4D3C7B753C5C47 /* LiiFBusinessPlaceCollectionFlowLayout.m in Sources */,
 				74C44BDE7C3E14EDE73B4FA6 /* LiiFTitleCellView.m in Sources */,
 				74C44714C48D0EE6A6E4669E /* LiiFImageCellView.m in Sources */,
+				74C445EF8FA6C8D548D2ABE5 /* LiiFInfoCellView.m in Sources */,
+				74C44D6E413C2A250A0BED0C /* LiiFToolbarCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

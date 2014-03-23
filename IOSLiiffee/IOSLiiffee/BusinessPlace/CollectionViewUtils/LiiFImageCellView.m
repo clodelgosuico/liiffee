@@ -4,6 +4,7 @@
 //
 
 #import "LiiFImageCellView.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface LiiFImageCellView()
 
@@ -65,7 +66,7 @@
     if(!_imageView){
         _imageView = [[UIImageView alloc] init];
         _imageView.translatesAutoresizingMaskIntoConstraints = NO;
-        _imageView.image = [UIImage imageNamed:@"SaladSample"];
+
     }
     return _imageView;
 }
@@ -76,6 +77,13 @@
 {
     if(!object || object == [NSNull null]){
         return ;
+    }
+    if([object isKindOfClass:[InstagramMedia class]]){
+        InstagramMedia *media = (InstagramMedia *) object;
+        [self.imageView setImageWithURL:media.thumbnailURL];
+    }
+    else {
+        self.imageView.image = [UIImage imageNamed:@"SaladSample"];
     }
 //    NSDictionary *foursquarePlace = (NSDictionary *)object;
 //    self.titleLabel.text = foursquarePlace[@"name"];

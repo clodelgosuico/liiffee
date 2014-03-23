@@ -11,6 +11,7 @@
 
 @property (nonatomic, strong) NSDictionary *foursquarePlace;
 @property (nonatomic, strong) NSArray *sections;
+@property (nonatomic, strong) NSArray *instagramMediaObjects;
 
 - (instancetype)initWithFoursquarePlace:(NSDictionary *)foursquarePlace;
 

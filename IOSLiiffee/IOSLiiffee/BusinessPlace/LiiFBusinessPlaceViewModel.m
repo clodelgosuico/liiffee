@@ -8,6 +8,7 @@
 #import "LiiFImageCellView.h"
 #import "LiiFInfoCellView.h"
 #import "LiiFToolbarCellView.h"
+#import "LiiF3rdPartyEngine.h"
 
 static NSString* TitleCellIdentifier = @"TitleCell";
 static NSString* InfoCellIdentifier = @"InfoCell";
@@ -32,11 +33,24 @@ static NSString* ImageCellIdentifier = @"ImageCell";
     }];
     [self.didBecomeActiveSignal subscribeNext:^(id x) {
         // TODO get instagram images for the place
+        @strongify(self);
+        [self getInstagramMedia];
     }];
 
     self.foursquarePlace = foursquarePlace;
 
     return self;
+}
+
+- (void)getInstagramMedia
+{
+    @weakify(self);
+    [[LiiF3rdPartyEngine searchInstagramForFoursquarePlace:self.foursquarePlace] subscribeNext:^(id x) {
+        @strongify(self);
+        NSArray *mediaObjects = (NSArray *)x;
+        self.instagramMediaObjects = mediaObjects;
+        [self prepareData];
+    }];
 }
 
 - (void)prepareData
@@ -46,22 +60,29 @@ static NSString* ImageCellIdentifier = @"ImageCell";
         NSArray *titleSection = @[self.foursquarePlace];
         NSArray *infoSection = @[self.foursquarePlace];
         NSArray *toolbarSection = @[[NSNull null]];
-        NSMutableArray *imagesSection = [
-                @[@{@"url" : @""},
-                  @{@"url" : @""},
-                  @{@"url" : @""},
-                  @{@"url" : @""},
-                  @{@"url" : @""},
-                  @{@"url" : @""},
-                  @{@"url" : @""},
-                  @{@"url" : @""},
-                  @{@"url" : @""},
-                ]
-                mutableCopy];
+
         [sections addObject:titleSection];
         [sections addObject:infoSection];
         [sections addObject:toolbarSection];
-        [sections addObject:imagesSection];
+
+        NSMutableArray *imagesSection = [
+                @[@{@"url" : @""},
+//                  @{@"url" : @""},
+//                  @{@"url" : @""},
+//                  @{@"url" : @""},
+//                  @{@"url" : @""},
+//                  @{@"url" : @""},
+//                  @{@"url" : @""},
+//                  @{@"url" : @""},
+//                  @{@"url" : @""},
+                ]
+                mutableCopy];
+        if(self.instagramMediaObjects){
+            [sections addObject:self.instagramMediaObjects];
+        }
+        else{
+            [sections addObject:imagesSection];
+        }
     }
 
     self.sections = sections;

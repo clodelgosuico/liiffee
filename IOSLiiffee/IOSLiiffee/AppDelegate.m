@@ -39,7 +39,7 @@
     self.window.rootViewController = navigationController;
     self.window.backgroundColor = [UIColor whiteColor];
 
-    [LiiF3rdPartyEngine testInstagram];
+//    [LiiF3rdPartyEngine testInstagram];
 //    [[InstagramEngine sharedEngine] locationsForFoursquarePlaces:nil withSuccess:^{
 //
 //    } failure:^(NSError *error) {

@@ -81,9 +81,14 @@
     if([object isKindOfClass:[InstagramMedia class]]){
         InstagramMedia *media = (InstagramMedia *) object;
         [self.imageView setImageWithURL:media.thumbnailURL];
+        self.titleLabel.attributedText = nil;
     }
     else {
-        self.imageView.image = [UIImage imageNamed:@"SaladSample"];
+        self.imageView.image = nil;
+        self.imageView.backgroundColor = [UIColor liifSubtleGray];
+        NSAttributedString *string = [[NSAttributedString alloc] initWithString:@"No salad image"
+                     attributes:[UIFont liifStringAttributesWithSize:12.0f withColor:[UIColor liifDarkText]]];
+        self.titleLabel.attributedText = string;
     }
 //    NSDictionary *foursquarePlace = (NSDictionary *)object;
 //    self.titleLabel.text = foursquarePlace[@"name"];

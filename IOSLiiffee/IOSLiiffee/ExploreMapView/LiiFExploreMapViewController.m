@@ -154,12 +154,20 @@
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
         
-        UIButton* button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        //UIButton* button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        //setting button image
+        //[button setImage:[UIImage imageNamed:@"RedPin"] forState:UIControlStateNormal];
         
-//        [button addTarget:self action:@selector(tapInfo:) forControlEvents:
-//         UIControlEventTouchUpInside];
+        //[button setBackgroundImage:[UIImage imageNamed:@"Arrow"] forState:UIControlStateNormal];
+        
+        UIImage *image = [UIImage imageNamed:@"Arrow"];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        CGRect frame = CGRectMake(22.0, 22.0, image.size.width, image.size.height);
+        button.frame = frame;
+        [button setBackgroundImage:image forState:UIControlStateNormal];
+        button.backgroundColor = [UIColor clearColor];
+        
         annotationView.rightCalloutAccessoryView = button;
-//        annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 
     }
     return annotationView;

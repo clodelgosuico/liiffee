@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "LiiF3rdPartyEngine.h"
 #import "LiiFExploreMapViewController.h"
+#import "InstagramEngine+Liiffee.h"
 
 @implementation AppDelegate
 
@@ -38,6 +39,11 @@
     self.window.rootViewController = navigationController;
     self.window.backgroundColor = [UIColor whiteColor];
 
+    [[InstagramEngine sharedEngine] locationsForFoursquarePlaces:nil withSuccess:^{
+
+    } failure:^(NSError *error) {
+
+    }];
 
     // force the cache to clear out
 //    [[EGOCache globalCache] clearCache];

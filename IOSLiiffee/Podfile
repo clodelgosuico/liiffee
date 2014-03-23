@@ -8,7 +8,8 @@ target "IOSLiiffee" do
   pod 'Facebook-iOS-SDK'
   pod 'libextobjc'
   #pod 'RestKit' # conflicting with afnetworking version required for other pods
-  pod 'InstagramKit', '2.1.0'
+  #pod 'InstagramKit', '2.1.0'
+  pod 'InstagramKit', :podspec => '../../InstagramKit/InstagramKit.podspec'
   pod 'Foursquare-API-v2', '1.4.4'
   pod 'EGOCache'
   pod 'Masonry'

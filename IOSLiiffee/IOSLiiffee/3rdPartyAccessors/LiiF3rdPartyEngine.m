@@ -16,6 +16,8 @@
 
 }
 
+#pragma mark - Foursquare
+
 + (NSArray*)presetSaladPlacesNames
 {
     NSArray* places = @[
@@ -113,8 +115,8 @@
     }];
 }
 
-+(NSArray*)searchFoursquarePlaceName:(NSString*)placeName inCityName:(NSString*)cityName
-                            callback:(Foursquare2Callback)callback
++(void)searchFoursquarePlaceName:(NSString *)placeName inCityName:(NSString *)cityName
+                        callback:(Foursquare2Callback)callback
 {
     [Foursquare2 venueSearchNearLocation:cityName query:placeName
                                    limit:@10 intent:intentBrowse radius:@800 categoryId:nil
@@ -134,8 +136,13 @@
             callback(success, found);
         }
     }];
+}
 
-    return nil;
+#pragma mark - Instagram pictures
+
++ (void)searchInstagramForFoursquarePlace:(NSString *)foursquareId
+{
+//    [InstagramEngine sharedEngine];
 }
 
 /**

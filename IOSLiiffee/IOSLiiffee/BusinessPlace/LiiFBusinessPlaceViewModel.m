@@ -66,7 +66,7 @@ static NSString* ImageCellIdentifier = @"ImageCell";
         [sections addObject:toolbarSection];
 
         NSMutableArray *imagesSection = [
-                @[@{@"url" : @""},
+                @[@{@"message" : @"Loading..."},
 //                  @{@"url" : @""},
 //                  @{@"url" : @""},
 //                  @{@"url" : @""},
@@ -78,7 +78,12 @@ static NSString* ImageCellIdentifier = @"ImageCell";
                 ]
                 mutableCopy];
         if(self.instagramMediaObjects){
-            [sections addObject:self.instagramMediaObjects];
+            if(self.instagramMediaObjects.count > 0){
+                [sections addObject:self.instagramMediaObjects];
+            }
+            else{
+                [sections addObject:@[@{@"message" : @"No Photo Yet!"},]];
+            }
         }
         else{
             [sections addObject:imagesSection];

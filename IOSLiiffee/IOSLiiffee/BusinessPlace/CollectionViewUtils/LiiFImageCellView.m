@@ -41,7 +41,11 @@
 - (void)setupLayout
 {
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.contentView);
+        make.centerX.equalTo(self.contentView.centerX);
+        make.centerY.equalTo(self.contentView.centerY);
+        make.width.equalTo(self.contentView.width).with.offset(-8.0f);
+        make.height.equalTo(self.contentView.height).with.offset(-8.0f);
+
     }];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView);
@@ -57,7 +61,8 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _titleLabel.backgroundColor = [UIColor clearColor];
-
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.numberOfLines = 0;
     }
     return _titleLabel;
 }
@@ -73,20 +78,32 @@
 
 #pragma mark - Setting data object
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.imageView.image = nil;
+    self.titleLabel.attributedText = nil;
+}
+
 - (void)setDataObject:(id)object
 {
     if(!object || object == [NSNull null]){
         return ;
     }
+
     if([object isKindOfClass:[InstagramMedia class]]){
         InstagramMedia *media = (InstagramMedia *) object;
         [self.imageView setImageWithURL:media.thumbnailURL];
-        self.titleLabel.attributedText = nil;
     }
     else {
-        self.imageView.image = nil;
+        NSString *title = @"";
+        if([object isKindOfClass:[NSDictionary class]])
+        {
+            NSDictionary *info = (NSDictionary *) object;
+            if(info[@"message"])
+                title = info[@"message"];
+        }
         self.imageView.backgroundColor = [UIColor liifSubtleGray];
-        NSAttributedString *string = [[NSAttributedString alloc] initWithString:@"No salad image"
+        NSAttributedString *string = [[NSAttributedString alloc] initWithString:title
                      attributes:[UIFont liifStringAttributesWithSize:12.0f withColor:[UIColor liifDarkText]]];
         self.titleLabel.attributedText = string;
     }
